@@ -1,16 +1,22 @@
 import React from 'react'
+import './Sidebar.css'
+import { PersonPlus } from 'react-bootstrap-icons'
+import img1 from './img1.jpg'
+import SingleSideChat from './SingleSideChat'
 
 function Sidebar() {
   return (
-    <div className='sideBar'>
-      <div className='sideBar_header'>
-
+    <div className='sidebar'>
+      <div className='sidebar_header'>
+        <img src={img1} className="rounded-circle" alt="user" />
+        <div id="userName">Noa Amit</div>
+        <button id='presonPlus_button'>
+          <PersonPlus />
+        </button>
       </div>
-      <div className='sideBar_chats'>
-
+      <div className='sidebar_chats'>
+        <SingleSideChat name="tomer" lastMessage={"love you"} lastseen="03:54" />
       </div>
-
-
     </div>
   )
 }

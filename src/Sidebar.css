@@ -1,0 +1,34 @@
+.sidebar {
+    display: flex;
+    flex: 0.35;
+    flex-direction: column;
+    overflow:auto;
+    border-right: 1px solid #f6f6f6;
+}
+
+.rounded-circle {
+    width: 60px;
+    height: 60px;
+}
+
+.sidebar_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    overflow:hidden;
+}
+
+#userName {
+    margin-right: auto;
+    padding-left: 20px;
+    font-size: 20px;
+}
+
+#presonPlus_button {
+    border: none;
+    cursor: pointer;
+    font-size: 25px;
+}

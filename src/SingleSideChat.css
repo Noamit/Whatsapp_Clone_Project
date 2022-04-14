@@ -1,0 +1,17 @@
+.SingleSideChat {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    overflow:hidden;
+}
+
+.SingleSideChat_info {
+margin-left: 10px;
+}
+
+.SingleSideChat:hover {
+    background-color: rgb(233, 230, 230);
+}
+
