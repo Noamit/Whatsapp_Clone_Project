@@ -51,7 +51,7 @@ class Register extends React.Component {
                                 <input className="login_input" type="password" />
                             </div>
                             <div className='login_buttom'>
-                                <input type="button" value="login" className="btn btn-outline-secondary" onClick={this.onSubmitHandler} />
+                                <input type="submit" value="login" className="btn btn-outline-secondary" onClick={this.onSubmitHandler} />
                             </div>
                         </form>
     
