@@ -27,16 +27,10 @@ class Login extends React.Component {
     
                         <form id="loginForm" className="form" action="/chat">
                             <div className='login_body_input'>
-                                <p>
-                                    Username
-                                </p>
-                                <input className="login_input" type="text" />
+                                <input placeholder="Username" className="login_input" type="text" />
                             </div>
                             <div className='login_body_input'>
-                                <p>
-                                    Password
-                                </p>
-                                <input className="login_input" type="password" />
+                                <input placeholder="Password" className="login_input" type="password" />
                             </div>
                             
                             <div className='login_buttom'>
