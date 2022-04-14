@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css'
 
-class Login extends React.Component {
-
+class Register extends React.Component {
+    
     constructor(props) {
         super(props);
         this.SubmitHandler = this.onSubmitHandler.bind(this);
@@ -11,7 +11,7 @@ class Login extends React.Component {
     
       onSubmitHandler = (e) => {
         e.preventDefault();
-        document.getElementById("loginForm").submit();
+        document.getElementById("RegisterForm").submit();
     
       }
 
@@ -23,12 +23,18 @@ class Login extends React.Component {
                         <div>NTM</div>
                     </div>
                     <div className='login_body'>
-                        <h2> Login </h2>
+                        <h2> Register </h2>
     
-                        <form id="loginForm" className="form" action="/chat">
+                        <form id="RegisterForm" className="form" action="/chat">
                             <div className='login_body_input'>
                                 <p>
                                     Username
+                                </p>
+                                <input className="login_input" type="text" />
+                            </div>
+                            <div className='login_body_input'>
+                                <p>
+                                    Display Name
                                 </p>
                                 <input className="login_input" type="text" />
                             </div>
@@ -38,18 +44,23 @@ class Login extends React.Component {
                                 </p>
                                 <input className="login_input" type="password" />
                             </div>
-                            
+                            <div className='login_body_input'>
+                                <p>
+                                    Confirm Password
+                                </p>
+                                <input className="login_input" type="password" />
+                            </div>
                             <div className='login_buttom'>
                                 <input type="button" value="login" className="btn btn-outline-secondary" onClick={this.onSubmitHandler} />
                             </div>
                         </form>
     
-                        <div id='notregistered'>Not registered?&nbsp;
+                        <div id='notregistered'>Already registered?&nbsp;
                             <span>
-                                <Link to='/register' id="forRegister">
+                                <Link to='/' id="forRegister">
                                     click here
                                 </Link>
-                                &nbsp;to Register.
+                                &nbsp;to Login.
                             </span>
                         </div>
                     </div>
@@ -59,4 +70,4 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+export default Register;
