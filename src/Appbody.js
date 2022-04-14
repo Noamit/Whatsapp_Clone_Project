@@ -1,6 +1,7 @@
 import React from 'react'
 import Sidebar from './Sidebar';
 import Chat from './Chat';
+import './Appbody.css'
 
 function Appbody() {
   return (
