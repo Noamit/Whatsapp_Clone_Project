@@ -7,24 +7,24 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
         this.SubmitHandler = this.onSubmitHandler.bind(this);
-      }
-    
-      onSubmitHandler = (e) => {
+    }
+
+    onSubmitHandler = (e) => {
         e.preventDefault();
         document.getElementById("loginForm").submit();
-    
-      }
 
-    render () {
+    }
+
+    render() {
         return (
             <div className='login'>
                 <div className='login_page'>
                     <div className='login_header'>
-                        <div>NTM</div>
+                        NTM
                     </div>
                     <div className='login_body'>
                         <h2> Login </h2>
-    
+
                         <form id="loginForm" className="form" action="/chat">
                             <div className='login_body_input'>
                                 <input placeholder="Username" className="login_input" type="text" />
@@ -32,12 +32,12 @@ class Login extends React.Component {
                             <div className='login_body_input'>
                                 <input placeholder="Password" className="login_input" type="password" />
                             </div>
-                            
+
                             <div className='login_buttom'>
                                 <input type="submit" value="login" className="btn btn-outline-secondary" onClick={this.onSubmitHandler} />
                             </div>
                         </form>
-    
+
                         <div id='notregistered'>Not registered?&nbsp;
                             <span>
                                 <Link to='/register' id="forRegister">
