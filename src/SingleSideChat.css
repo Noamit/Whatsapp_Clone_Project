@@ -4,13 +4,17 @@
     padding: 20px;
     border-right: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
+    height: 90px;
     overflow: hidden;
 }
 
 .SingleSideChat_info {
+    flex: 1;
     margin-left: 10px;
+    margin-right: 5px;
     overflow: hidden;
 }
+
 .a {
     display: flex;
     justify-content: space-between;
@@ -23,6 +27,7 @@
 
 #info_lastSeen {
     margin-left: auto;
+    padding-left: 3%;
 }
 
 #info_name {
@@ -31,4 +36,8 @@
 
 #info_message {
     font-size: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: nowrap;
 }

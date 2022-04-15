@@ -9,7 +9,7 @@ function SingleSideChat({ name, lastMessage, lastseen }) {
             <div className='SingleSideChat_info'>
                 <div className='a'>
                     <div id="info_name">{name} </div>
-                    <div id="info_message">{lastMessage}</div>
+                    <p id="info_message">{lastMessage}</p>
                 </div>
             </div>
             <div id="info_lastSeen">{lastseen}</div>
