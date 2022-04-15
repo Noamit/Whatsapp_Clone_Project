@@ -2,7 +2,7 @@ import React from 'react'
 import './Chat.css'
 import img1 from './photo.jpg'
 import { Paperclip } from 'react-bootstrap-icons'
-//88
+
 
 function Chat() {
   return (
