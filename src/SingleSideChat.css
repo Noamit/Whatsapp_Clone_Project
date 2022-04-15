@@ -4,17 +4,31 @@
     padding: 20px;
     border-right: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 .SingleSideChat_info {
-margin-left: 10px;
+    margin-left: 10px;
+    overflow: hidden;
+}
+.a {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
 .SingleSideChat:hover {
     background-color: rgb(233, 230, 230);
 }
 
-.a {
-    display: flex;
+#info_lastSeen {
+    margin-left: auto;
+}
+
+#info_name {
+    font-size: 22px;
+}
+
+#info_message {
+    font-size: 18px;
 }
