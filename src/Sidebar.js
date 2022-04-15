@@ -2,7 +2,7 @@ import React from 'react'
 
 function Sidebar() {
   return (
-    <div className='sideBar'>
+    <div className='sidebar'>
       <div className='sideBar_header'>
 
       </div>
