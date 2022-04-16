@@ -4,7 +4,9 @@ import './Login.css'
 
 function Login() {
 
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [userName, setUserName] = useState('')
+    const [password, setPassword] = useState('')
 
     const renderAuthButton = () => {
         if (isLoggedIn) {
@@ -19,6 +21,19 @@ function Login() {
             );
         }
     }
+
+    const Valid=() =>{
+        // console.log("hi")
+        if(userName.length > 0 && password.length > 0){
+            console.log("hi")
+            setIsLoggedIn(bool => bool=true)
+        }else{
+            setIsLoggedIn(bool => bool=false)
+        }
+        
+    }
+
+
     return (
         <div className='login'>
             <div className='login_page'>
@@ -29,10 +44,13 @@ function Login() {
                     <h2> Login </h2>
                     <form id="loginForm" className="form" >
                         <div className='login_body_input'>
-                            <input placeholder="Username" className="login_input" type="text" />
+                            <input placeholder="Username" className="login_input" type="text" value={userName} 
+                            onChange={e => 
+                            {setUserName(e.target.value);
+                            Valid(); }}  />
                         </div>
                         <div className='login_body_input'>
-                            <input placeholder="Password" className="login_input" type="password" />
+                            <input placeholder="Password" className="login_input" type="password" value={password} onChange={e => {setPassword(e.target.value); Valid();}} />
                         </div>
                         <div className='login_buttom'>
                             {renderAuthButton()}
