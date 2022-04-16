@@ -2,6 +2,7 @@
     flex: 0.65;
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
 }
 
 .chat_header{
@@ -104,3 +105,27 @@
     padding-right: 10px;
 }
 
+
+#Paperclip_button {
+    border :hidden;
+}
+
+#Paperclip_button:hover {
+    background-color: rgb(233, 230, 230);
+    border-radius: 10px;
+}
+
+.buttons_optaions {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+    margin-top: auto;
+}
+
+
+.buttons_optaions > button {
+    border :hidden;
+    background-color: white;
+    font-size: larger;
+}

@@ -4,6 +4,7 @@
     flex-direction: column;
     overflow:auto;
     border-right: 1px solid #f6f6f6;
+    border-radius: 10px;
 }
 
 .rounded-circle {
