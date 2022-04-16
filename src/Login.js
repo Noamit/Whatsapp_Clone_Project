@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css'
+import LoginModal from './LoginModal'
 
 function Login() {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
+
+    const [openModel, setOpenModel] = useState(false);
 
     const renderAuthButton = () => {
         if (isLoggedIn) {
@@ -17,7 +20,7 @@ function Login() {
             );
         } else {
             return (
-                <input type="button" value="login" className="btn btn-outline-secondary" onClick={()=> alert("no")} />
+                <input type="button" value="login" className="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#LoginModal" onClick={() => {setOpenModel(true); }} />
             );
         }
     }
@@ -67,6 +70,7 @@ function Login() {
                     </div>
                 </div>
             </div >
+            {openModel && <LoginModal close_modal={setOpenModel} />}
         </div >
     );
 }
