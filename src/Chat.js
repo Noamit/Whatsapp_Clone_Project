@@ -12,7 +12,7 @@ function Chat() {
       <img src={img1} id="rounded-circle_chat" className="rounded-circle" alt='user' />
         <div className='header_info'>
            <div id='header_info_name' >Tomer</div>
-           <p>Last seen at...</p>
+           <p>Last seen at....</p>
         </div>
       </div>
       <div className='chat_body'>
