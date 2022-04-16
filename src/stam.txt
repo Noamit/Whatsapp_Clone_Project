@@ -26,3 +26,20 @@
 #a {
     display: none;
 }
+
+        <div className="App">
+        <h1>
+          This is a Demo showing several ways to implement Conditional Rendering in React.
+        </h1>
+        {renderAuthButton()}
+      </div>
+
+          const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    const renderAuthButton = () => {
+      if (isLoggedIn) {
+        return <button>Logout</button>;
+      } else {
+        return <button>Login</button>;
+      }
+    }
