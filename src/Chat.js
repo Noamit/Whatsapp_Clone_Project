@@ -15,7 +15,6 @@ function Chat() {
           <p>Last seen at...</p>
         </div>
       </div>
-
       <div className='chat_body'>
       </div>
 
