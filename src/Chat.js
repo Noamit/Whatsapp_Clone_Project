@@ -9,17 +9,20 @@ function Chat() {
     <div className='chat'>
 
       <div className='chat_header'>
-        <img src={img1} id="rounded-circle_chat" className="rounded-circle" alt='user' />
+      <img src={img1} id="rounded-circle_chat" className="rounded-circle" alt='user' />
         <div className='header_info'>
-          <div id='header_info_name' >Tomer</div>
-          <p>Last seen at...</p>
+           <div id='header_info_name' >Tomer</div>
+           <p>Last seen at....</p>
         </div>
       </div>
       <div className='chat_body'>
+        <p className={`message ${true && 'recive_message'}`}>
+          message..
+          <span className='message_time'>8:00am</span>
+        </p>
       </div>
 
       <div className='chat_input'>
-
         <button><Paperclip /></button>
         <form>
           <input placeholder='Type a Message' />
@@ -30,5 +33,4 @@ function Chat() {
     </div>
   )
 }
-
 export default Chat
