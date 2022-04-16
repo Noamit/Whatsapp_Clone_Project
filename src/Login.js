@@ -17,19 +17,18 @@ function Login() {
             );
         } else {
             return (
-                <input type="submit" value="login" className="btn btn-outline-secondary" />
+                <input type="button" value="login" className="btn btn-outline-secondary" onClick={()=> alert("no")} />
             );
         }
     }
 
-    const Valid=() =>{
-        if(userName.length > 0 && password.length > 0){
-            console.log("hi")
-            setIsLoggedIn(bool => bool=true)
-        }else{
-            setIsLoggedIn(bool => bool=false)
+    const Valid = () => {
+        if (userName.length > 0 && password.length > 0) {
+            setIsLoggedIn(bool => bool = true)
+        } else {
+            setIsLoggedIn(bool => bool = false)
         }
-        
+
     }
 
 
@@ -43,13 +42,15 @@ function Login() {
                     <h2> Login </h2>
                     <form id="loginForm" className="form" >
                         <div className='login_body_input'>
-                            <input placeholder="Username" className="login_input" type="text" value={userName} 
-                            onChange={e => 
-                            {setUserName(e.target.value);
-                            Valid(); }}  />
+                            <input placeholder="Username" className="login_input" type="text" value={userName}
+                                onChange={e => {
+                                    setUserName(e.target.value);
+                                    setIsLoggedIn(false);
+                                    Valid();
+                                }} />
                         </div>
                         <div className='login_body_input'>
-                            <input placeholder="Password" className="login_input" type="password" value={password} onChange={e => {setPassword(e.target.value); Valid();}} />
+                            <input placeholder="Password" className="login_input" type="password" value={password} onChange={e => { setPassword(e.target.value); setIsLoggedIn(false); Valid();}} />
                         </div>
                         <div className='login_buttom'>
                             {renderAuthButton()}
