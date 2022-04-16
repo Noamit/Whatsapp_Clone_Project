@@ -14,22 +14,18 @@ function Register() {
 
                     <form id="RegisterForm" className="form" action="/chat">
                         <div className='login_body_input'>
-                            {/* <p>Username</p> */}
                             <input placeholder="Username" className="login_input" type="text" />
                         </div>
 
                         <div className='login_body_input'>
-                            {/* <p>Display Name</p> */}
                             <input placeholder='Display Name' className="login_input" type="text" />
                         </div>
 
                         <div className='login_body_input'>
-                            {/* <p> Password</p> */}
                             <input placeholder="Password" className="login_input" type="password" />
                         </div>
 
                         <div className='login_body_input'>
-                            {/* <p>Confirm Password</p> */}
                             <input placeholder="Confirm Password" className="login_input" type="password" />
                         </div>
 

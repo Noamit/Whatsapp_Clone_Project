@@ -23,7 +23,6 @@ function Login() {
     }
 
     const Valid=() =>{
-        // console.log("hi")
         if(userName.length > 0 && password.length > 0){
             console.log("hi")
             setIsLoggedIn(bool => bool=true)
