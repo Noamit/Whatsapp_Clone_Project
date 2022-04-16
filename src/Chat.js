@@ -1,10 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Chat.css'
 import img1 from './photo.jpg'
 import { Paperclip, CameraReels, Mic, Image} from 'react-bootstrap-icons'
 
 
 function Chat() {
+  const [input, setInput] = useState("")
+  const [message, setMessage] = useState([])
+  
+  const getTime = () => {
+    let today = new Date();
+    let hour = String(today.getHours()).padStart(2, '0');
+    let min = String(today.getMinutes() + 1).padStart(2, '0');
+    return hour + ":" + min
+  }
+  
+  
+  const newMessage = (e) => {
+    e.preventDefault();
+    setMessage(()=>(<p className={`message ${true && 'recive_message'}`}>
+    {input}
+    <span className='message_time'>{getTime()}</span></p>))
+    setInput("")
+  }
+
   return (
     <div className='chat'>
 
@@ -16,10 +35,9 @@ function Chat() {
         </div>
       </div>
       <div className='chat_body'>
-        <p className={`message ${true && 'recive_message'}`}>
-          message..
-          <span className='message_time'>8:00am</span>
-        </p>
+        {message}
+        {message}
+        {message}
       </div>
 
       <div className='chat_input'>
@@ -37,8 +55,8 @@ function Chat() {
         </div>
 
         <form>
-          <input placeholder='Type a Message' />
-          <button type='submit'>Send</button>
+          <input placeholder='Type a Message' value={input} onChange={(e)=> setInput(e.target.value)} />
+          <button type='submit' onClick={newMessage}>Send</button>
         </form>
       </div>
 
