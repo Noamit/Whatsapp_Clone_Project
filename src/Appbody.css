@@ -3,6 +3,10 @@
     place-items: center;
     background-color: #dadbd3;
     height: 100vh;
+    background-image: url('background3.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 .app_body {
