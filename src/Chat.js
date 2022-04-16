@@ -15,9 +15,11 @@ function Chat() {
            <p>Last seen at...</p>
         </div>
       </div>
-
       <div className='chat_body'>
-
+        <p className={`message ${true && 'recive_message'}`}>
+          message..
+          <span className='message_time'>8:00am</span>
+        </p>
       </div>
 
       <div className='chat_input'>
