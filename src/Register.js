@@ -24,18 +24,28 @@ function Register() {
             );
         } else {
             return (
-                <input type="button" value="Register" className="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#RegisterModal" onClick={() => {setOpenModel(true); }}/>
+                <input type="button" value="Register" className="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#RegisterModal" onClick={() => { setOpenModel(true); }} />
             );
         }
     }
 
     const Valid = () => {
-        if (userName.length > 0 && password.length > 0 && displayName.length > 0 
+        if (userName.length > 0 && document.getElementById('pass1').value.length > 0 && displayName.length > 0
             && document.getElementById('pass1').value === document.getElementById('pass2').value && checkPassword()) {
             setisRegistered(bool => bool = true)
-        } else {
-            seterrorDescription('password must contain at least one letter a-z or A-Z and one digit 0-9');
-            setisRegistered(bool => bool = false) 
+        }
+
+        else {
+            if (userName.length === 0 || document.getElementById('pass2').value.length === 0 || displayName.length === 0 || document.getElementById('pass1').value.length === 0) {
+                seterrorDescription('please fill all the fields');
+            } else if (checkPassword() != true) {
+                seterrorDescription('password must contain at least one letter a-z or A-Z and one digit 0-9');
+            } else if (document.getElementById('pass1').value !== document.getElementById('pass2').value) {
+                seterrorDescription('Incompatible passwords');
+            } else {
+                seterrorDescription('username already exists');
+            }
+            setisRegistered(bool => bool = false)
         }
     }
 
@@ -111,7 +121,7 @@ function Register() {
                     </div>
                 </div>
             </div>
-            {openModel && <RegisterModal close_modal={setOpenModel} message={errorDescription}/>}
+            {openModel && <RegisterModal close_modal={setOpenModel} message={errorDescription} />}
         </div>
     )
 }
