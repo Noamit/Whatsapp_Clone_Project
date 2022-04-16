@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css'
+import RegisterModal from './RegisterModal';
 
 function Register() {
 
@@ -9,6 +10,10 @@ function Register() {
     const [displayName, setDisplayName] = useState('')
     const [password, setPassword] = useState('')
     const [confirmedPassword, setcConfirmedPassword] = useState('')
+
+    const [openModel, setOpenModel] = useState(false);
+    const [errorDescription, seterrorDescription] = useState('please fill all the fields');
+
 
     const renderAuthButton = () => {
         if (isRegistered) {
@@ -19,7 +24,7 @@ function Register() {
             );
         } else {
             return (
-                <input type="button" value="Register" className="btn btn-outline-secondary" />
+                <input type="button" value="Register" className="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#RegisterModal" onClick={() => {setOpenModel(true); }}/>
             );
         }
     }
@@ -29,7 +34,8 @@ function Register() {
             && document.getElementById('pass1').value === document.getElementById('pass2').value && checkPassword()) {
             setisRegistered(bool => bool = true)
         } else {
-            setisRegistered(bool => bool = false)
+            seterrorDescription('password must contain at least one letter a-z or A-Z and one digit 0-9');
+            setisRegistered(bool => bool = false) 
         }
     }
 
@@ -105,6 +111,7 @@ function Register() {
                     </div>
                 </div>
             </div>
+            {openModel && <RegisterModal close_modal={setOpenModel} message={errorDescription}/>}
         </div>
     )
 }
