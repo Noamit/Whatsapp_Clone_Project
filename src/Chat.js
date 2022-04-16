@@ -9,18 +9,18 @@ function Chat() {
     <div className='chat'>
 
       <div className='chat_header'>
-      <img src={img1} id="rounded-circle_chat" className="rounded-circle" alt='user' />
+        <img src={img1} id="rounded-circle_chat" className="rounded-circle" alt='user' />
         <div className='header_info'>
-           <div id='header_info_name' >Tomer</div>
-           <p>Last seen at...</p>
+          <div id='header_info_name' >Tomer</div>
+          <p>Last seen at...</p>
         </div>
       </div>
 
       <div className='chat_body'>
-
       </div>
 
       <div className='chat_input'>
+
         <button><Paperclip /></button>
         <form>
           <input placeholder='Type a Message' />
