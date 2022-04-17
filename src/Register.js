@@ -58,13 +58,25 @@ function Register() {
         }
     }
 
-    function checkPassword() {
+    const checkPassword = () => {
         return /[a-zA-Z]/.test(password) && /[0-9]/.test(password);
     }
 
-    function checkoutUserName() {
-
+    const checkoutUserName = () => {
+        if(a.usersDataBase[userName]) {
+            return true;
+        }
+        return false;
     }
+
+
+    // function checkPassword() {
+    //     return /[a-zA-Z]/.test(password) && /[0-9]/.test(password);
+    // }
+
+    // function checkoutUserName() {
+    //     return true;
+    // }
 
     return (
         <div className='login'>
@@ -75,13 +87,12 @@ function Register() {
                 <div className='login_body'>
                     <h2> Register </h2>
 
-                    <form id="RegisterForm" className="form" action="/chat">
+                    <form id="RegisterForm" className="form" action="/chat" onClick={()=> Valid()}>
                         <div className='login_body_input'>
                             <input placeholder="Username" className="login_input" type="text" value={userName}
                                 onChange={e => {
                                     setUserName(e.target.value);
                                     setisRegistered(false);
-                                    Valid();
                                 }} />
                         </div>
 
@@ -90,7 +101,6 @@ function Register() {
                                 onChange={e => {
                                     setDisplayName(e.target.value);
                                     setisRegistered(false);
-                                    Valid();
                                 }} />
                         </div>
 
@@ -99,7 +109,6 @@ function Register() {
                                 onChange={e => {
                                     setPassword(e.target.value);
                                     setisRegistered(false);
-                                    Valid();
                                 }} />
                         </div>
 
@@ -108,7 +117,7 @@ function Register() {
                                 onChange={e => {
                                     setcConfirmedPassword(e.target.value);
                                     setisRegistered(false);
-                                    Valid();
+                                    
                                 }} />
                         </div>
 
