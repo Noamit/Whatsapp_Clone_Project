@@ -1,6 +1,6 @@
 import React from 'react'
 
-function LoginModal({ close_modal }) {
+function LoginModal({ close_modal, buttonOn }) {
     return (
         <div id="LoginModal" className="modal" >
             <div className="modal-dialog">
@@ -13,7 +13,7 @@ function LoginModal({ close_modal }) {
                         please enter valid username and password
                     </h5>
                     <div class="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={() => { close_modal(false) }}>Close</button>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={() => { close_modal(false);}}>Close</button>
                     </div>
                 </div>
             </div>

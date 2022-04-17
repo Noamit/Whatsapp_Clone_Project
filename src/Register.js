@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css'
-import RegisterModal from './RegisterModal';
+import RegisterErrorModal from './RegisterErrorModal';
+import RegisterSuccessModal from './RegisterSuccessModal';
+
+import User from './User';
+import usersDataBase from './DataBase'
 
 function Register() {
 
@@ -11,23 +15,25 @@ function Register() {
     const [password, setPassword] = useState('')
     const [confirmedPassword, setcConfirmedPassword] = useState('')
 
-    const [openModel, setOpenModel] = useState(false);
+    const [openErrorModel, setOpenErrorModel] = useState(false);
+    const [openSuccessModel, setOpenSuccessModel] = useState(false);
+
+
     const [errorDescription, seterrorDescription] = useState('please fill all the fields');
 
 
     const renderAuthButton = () => {
         if (isRegistered) {
             return (
-                <Link to='/chat'>
-                    <input type="submit" value="Register" className="btn btn-outline-secondary" />
-                </Link>
+                <input type="button" value="Register" className="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#RegisterSuccessModal" onClick={() => { setOpenSuccessModel(true); }} />
             );
         } else {
             return (
-                <input type="button" value="Register" className="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#RegisterModal" onClick={() => { setOpenModel(true); }} />
+                <input type="button" value="Register" className="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#RegisterModal" onClick={(e) => { setOpenErrorModel(true); }} />
             );
         }
     }
+
 
     const Valid = () => {
         if (userName.length > 0 && document.getElementById('pass1').value.length > 0 && displayName.length > 0
@@ -121,9 +127,11 @@ function Register() {
                     </div>
                 </div>
             </div>
-            {openModel && <RegisterModal close_modal={setOpenModel} message={errorDescription} />}
+            {openErrorModel && <RegisterErrorModal close_modal={setOpenErrorModel} message={errorDescription} />}
+            {openSuccessModel && <RegisterSuccessModal/>}
         </div>
     )
 }
+
 
 export default Register;

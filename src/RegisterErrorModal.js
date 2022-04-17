@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
-function RegisterModal({ close_modal , message}) {
+function RegisterErrorModal({ close_modal , message}) {
 
     return (
         <div id="RegisterModal" className="modal" >
@@ -22,4 +23,4 @@ function RegisterModal({ close_modal , message}) {
     );
 }
 
-export default RegisterModal
+export default RegisterErrorModal

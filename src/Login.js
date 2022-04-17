@@ -8,7 +8,6 @@ function Login() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
-
     const [openModel, setOpenModel] = useState(false);
 
     const renderAuthButton = () => {
@@ -26,14 +25,13 @@ function Login() {
     }
 
     const Valid = () => {
-        if (userName.length > 0 && password.length > 0) {
+        if (userName.length > 0 && document.getElementById('pass').value.length > 0) {
             setIsLoggedIn(bool => bool = true)
         } else {
             setIsLoggedIn(bool => bool = false)
         }
 
     }
-
 
     return (
         <div className='login'>
@@ -53,7 +51,7 @@ function Login() {
                                 }} />
                         </div>
                         <div className='login_body_input'>
-                            <input placeholder="Password" className="login_input" type="password" value={password} onChange={e => { setPassword(e.target.value); setIsLoggedIn(false); Valid();}} />
+                            <input placeholder="Password" className="login_input" id="pass" type="password" value={password} onChange={e => { setPassword(e.target.value); setIsLoggedIn(false); Valid();}} />
                         </div>
                         <div className='login_buttom'>
                             {renderAuthButton()}
@@ -73,6 +71,8 @@ function Login() {
             {openModel && <LoginModal close_modal={setOpenModel} />}
         </div >
     );
+
 }
+
 
 export default Login;
