@@ -5,7 +5,7 @@ import RegisterErrorModal from './RegisterErrorModal';
 import RegisterSuccessModal from './RegisterSuccessModal';
 
 import User from './User';
-import a from './DataBase'
+import dataBase from './DataBase'
 
 function Register() {
 
@@ -35,7 +35,7 @@ function Register() {
                     Valid();
                     setOpenSuccessModel(true);
                     new User(userName, displayName, password, './noadog.jpg');
-                    a.addUserToDataBase(userName, User)
+                    dataBase.addUserToDataBase(userName, User)
                 }} />
             );
         } else {
@@ -47,71 +47,17 @@ function Register() {
 
     const Valid = () => {
         if (userName.length > 0 && password.length > 0 && displayName.length > 0
-            && String(password) === String(confirmedPassword) && checkPassword() && !(a.usersDataBase.has(userName))) {
+            && String(password) === String(confirmedPassword) && checkPassword() && !(dataBase.usersDataBase.has(userName))) {
             setisRegistered(bool => bool = true)
-            console.log("username len " + userName.length);
-            console.log("username " + userName);
-            console.log("password " + password.length);
-            console.log("displayname " + displayName.length);
-            console.log("password " + String(password));
-            console.log("confirm password " + String(confirmedPassword));
-            console.log("check password " + checkPassword());
-            console.log("check user exist: " + (a.usersDataBase.has(userName)));
-            console.log("map size: " + (a.usersDataBase.size));
         }
         else {
             if (userName.length === 0 || confirmedPassword.length === 0 || displayName.length === 0 || password.length === 0) {
                 seterrorDescription('please fill all the fields');
-                console.log("....................................................................................");
-                console.log("LEN 0:");
-                console.log("username len " + userName.length);
-                console.log("username " + userName);
-                console.log("password " + password.length);
-                console.log("displayname " + displayName.length);
-                console.log("password " + String(password));
-                console.log("confirm password " + String(confirmedPassword));
-                console.log("check password " + checkPassword());
-                console.log("check user exist: " + (a.usersDataBase.has(userName)));
-                console.log("map size: " + (a.usersDataBase.size));
-                console.log("....................................................................................");
             } else if (checkPassword() !== true) {
                 seterrorDescription('password must contain at least one letter a-z or A-Z and one digit 0-9');
-                console.log("....................................................................................");
-                console.log("username len " + userName.length);
-                console.log("username " + userName);
-                console.log("password " + password.length);
-                console.log("displayname " + displayName.length);
-                console.log("password " + String(password));
-                console.log("confirm password " + String(confirmedPassword));
-                console.log("check password " + checkPassword());
-                console.log("check user exist: " + (a.usersDataBase.has(userName)));
-                console.log("map size: " + (a.usersDataBase.size));
-                console.log("....................................................................................");
             } else if (String(password) !== String(confirmedPassword)) {
-                console.log("....................................................................................");
-                console.log("username len " + userName.length);
-                console.log("username " + userName);
-                console.log("password " + password.length);
-                console.log("displayname " + displayName.length);
-                console.log("password " + String(password));
-                console.log("confirm password " + String(confirmedPassword));
-                console.log("check password " + checkPassword());
-                console.log("check user exist: " + (a.usersDataBase.has(userName)));
-                console.log("map size: " + (a.usersDataBase.size));
-                console.log("....................................................................................");
                 seterrorDescription('Incompatible passwords');
             } else {
-                console.log("....................................................................................");
-                console.log("username len " + userName.length);
-                console.log("username " + userName);
-                console.log("password " + password.length);
-                console.log("displayname " + displayName.length);
-                console.log("password " + String(password));
-                console.log("confirm password " + String(confirmedPassword));
-                console.log("check password " + checkPassword());
-                console.log("check user exist: " + (a.usersDataBase.has(userName)));
-                console.log("map size: " + (a.usersDataBase.size));
-                console.log("....................................................................................");
                 seterrorDescription('username already exists, pls pick another One');
             }
         }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css'
 import LoginModal from './LoginModal'
-import a from './DataBase'
+import dataBase from './DataBase'
 
 function Login() {
 
@@ -31,7 +31,7 @@ function Login() {
     }
 
     const Valid = () => {
-        if (userName.length > 0 && password.length > 0 && (a.usersDataBase.has(userName) && a.usersDataBase.get(userName).password === String(password))) {
+        if (userName.length > 0 && password.length > 0 && (dataBase.usersDataBase.has(userName) && dataBase.usersDataBase.get(userName).password === String(password))) {
             setIsLoggedIn(bool => bool = true)
         }
     }

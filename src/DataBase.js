@@ -1,13 +1,6 @@
 import User from "./User";
 import noadog from './noadog.jpg';
 
-// const usersDataBase = [];
-// const newUser = new User('noamit', 'noa', 'noa1', noadog);
-
-// usersDataBase.push({key: 'noamit', value: newUser});
-
-// export default usersDataBase;
-
 class DataBase {
     constructor() {
         this.usersDataBase = new Map();
@@ -19,8 +12,8 @@ class DataBase {
 
 }
 
-const a = new DataBase();
-a.addUserToDataBase('noamit', new User('noamit', 'noa', 'noa1', noadog));
-a.addUserToDataBase('noa',new User('noamit', 'noa', 'noa1', noadog));
+const dataBase = new DataBase();
+dataBase.addUserToDataBase('noamit', new User('noamit', 'noa', 'noa1', noadog));
+dataBase.addUserToDataBase('noa',new User('noamit', 'noa', 'noa1', noadog));
 
-export default a;
+export default dataBase;
