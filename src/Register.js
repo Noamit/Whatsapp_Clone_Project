@@ -5,7 +5,7 @@ import RegisterErrorModal from './RegisterErrorModal';
 import RegisterSuccessModal from './RegisterSuccessModal';
 
 import User from './User';
-import usersDataBase from './DataBase'
+import a from './DataBase'
 
 function Register() {
 
@@ -18,18 +18,22 @@ function Register() {
     const [openErrorModel, setOpenErrorModel] = useState(false);
     const [openSuccessModel, setOpenSuccessModel] = useState(false);
 
-
     const [errorDescription, seterrorDescription] = useState('please fill all the fields');
 
+    
 
     const renderAuthButton = () => {
         if (isRegistered) {
             return (
-                <input type="button" value="Register" className="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#RegisterSuccessModal" onClick={() => { setOpenSuccessModel(true); }} />
+                <input type="button" value="Register" className="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#RegisterSuccessModal" onClick={() => {
+                    setOpenSuccessModel(true);
+                    new User(userName, displayName, document.getElementById('pass1').value, document.getElementById('img').value);
+                    a.addUserToDataBase(userName, User);
+                }} />
             );
         } else {
             return (
-                <input type="button" value="Register" className="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#RegisterModal" onClick={(e) => { setOpenErrorModel(true); }} />
+                <input type="button" value="Register" className="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#RegisterModal" onClick={() => { setOpenErrorModel(true); }} />
             );
         }
     }
@@ -37,10 +41,9 @@ function Register() {
 
     const Valid = () => {
         if (userName.length > 0 && document.getElementById('pass1').value.length > 0 && displayName.length > 0
-            && document.getElementById('pass1').value === document.getElementById('pass2').value && checkPassword()) {
+            && document.getElementById('pass1').value === document.getElementById('pass2').value && checkPassword() && checkoutUserName()) {
             setisRegistered(bool => bool = true)
         }
-
         else {
             if (userName.length === 0 || document.getElementById('pass2').value.length === 0 || displayName.length === 0 || document.getElementById('pass1').value.length === 0) {
                 seterrorDescription('please fill all the fields');
@@ -57,6 +60,10 @@ function Register() {
 
     function checkPassword() {
         return /[a-zA-Z]/.test(password) && /[0-9]/.test(password);
+    }
+
+    function checkoutUserName() {
+
     }
 
     return (
@@ -128,7 +135,7 @@ function Register() {
                 </div>
             </div>
             {openErrorModel && <RegisterErrorModal close_modal={setOpenErrorModel} message={errorDescription} />}
-            {openSuccessModel && <RegisterSuccessModal/>}
+            {openSuccessModel && <RegisterSuccessModal />}
         </div>
     )
 }
