@@ -4,7 +4,7 @@ import img2 from './img2.jpg'
 
 function SingleSideChat({ name, lastMessage, lastseen }) {
     return (
-        <p className='SingleSideChat'>
+        <div className='SingleSideChat'>
             <img src={img2} className="rounded-circle" alt="new contant" />
             <div className='SingleSideChat_info'>
                 <div className='a'>
@@ -13,7 +13,7 @@ function SingleSideChat({ name, lastMessage, lastseen }) {
                 </div>
             </div>
             <div id="info_lastSeen">{lastseen}</div>
-        </p>
+        </div>
     )
 }
 

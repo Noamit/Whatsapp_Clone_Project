@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css'
 import LoginModal from './LoginModal'
+import a from './DataBase'
 
 function Login() {
 
@@ -9,6 +10,11 @@ function Login() {
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
     const [openModel, setOpenModel] = useState(false);
+
+    useEffect(() => {
+        setIsLoggedIn(false)
+        Valid();
+    }, [userName, password])
 
     const renderAuthButton = () => {
         if (isLoggedIn) {
@@ -19,18 +25,16 @@ function Login() {
             );
         } else {
             return (
-                <input type="button" value="login" className="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#LoginModal" onClick={() => {setOpenModel(true); }} />
+                <input type="button" value="login" className="btn btn-outline-secondary" onClick={() => {setOpenModel(true); Valid();}} />
             );
         }
     }
 
     const Valid = () => {
-        if (userName.length > 0 && document.getElementById('pass').value.length > 0) {
+        console.log(a.usersDataBase.get(userName))
+        if (userName.length > 0 && password.length > 0 && (a.usersDataBase.has(userName) && a.usersDataBase.get(userName).password === password)) {
             setIsLoggedIn(bool => bool = true)
-        } else {
-            setIsLoggedIn(bool => bool = false)
         }
-
     }
 
     return (
@@ -46,12 +50,10 @@ function Login() {
                             <input placeholder="Username" className="login_input" type="text" value={userName}
                                 onChange={e => {
                                     setUserName(e.target.value);
-                                    setIsLoggedIn(false);
-                                    Valid();
                                 }} />
                         </div>
                         <div className='login_body_input'>
-                            <input placeholder="Password" className="login_input" id="pass" type="password" value={password} onChange={e => { setPassword(e.target.value); setIsLoggedIn(false); Valid();}} />
+                            <input placeholder="Password" className="login_input" id="pass" type="password" value={password} onChange={e => { setPassword(e.target.value);}} />
                         </div>
                         <div className='login_buttom'>
                             {renderAuthButton()}
