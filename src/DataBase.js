@@ -21,4 +21,6 @@ class DataBase {
 
 const a = new DataBase();
 a.addUserToDataBase('noamit', new User('noamit', 'noa', 'noa1', noadog));
+a.addUserToDataBase('noa',new User('noamit', 'noa', 'noa1', noadog));
+
 export default a;

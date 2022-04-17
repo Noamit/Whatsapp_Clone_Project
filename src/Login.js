@@ -25,14 +25,13 @@ function Login() {
             );
         } else {
             return (
-                <input type="button" value="login" className="btn btn-outline-secondary" onClick={() => {setOpenModel(true); Valid();}} />
+                <input type="button" value="login" className="btn btn-outline-secondary" onClick={() => {setOpenModel(true);}} />
             );
         }
     }
 
     const Valid = () => {
-        console.log(a.usersDataBase.get(userName))
-        if (userName.length > 0 && password.length > 0 && (a.usersDataBase.has(userName) && a.usersDataBase.get(userName).password === password)) {
+        if (userName.length > 0 && password.length > 0 && (a.usersDataBase.has(userName) && a.usersDataBase.get(userName).password === String(password))) {
             setIsLoggedIn(bool => bool = true)
         }
     }
@@ -53,7 +52,7 @@ function Login() {
                                 }} />
                         </div>
                         <div className='login_body_input'>
-                            <input placeholder="Password" className="login_input" id="pass" type="password" value={password} onChange={e => { setPassword(e.target.value);}} />
+                            <input placeholder="Password" className="login_input" id="pass" type="password" value={password} onChange={e => {setPassword(e.target.value);}} />
                         </div>
                         <div className='login_buttom'>
                             {renderAuthButton()}
