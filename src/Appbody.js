@@ -9,6 +9,7 @@ function Appbody({ userChat }) {
   const [onChat, setOnChat] = useState(false);
   const [openChat, setOpenChat] = useState('');
 
+
   const renderCharOrEmtyChat = () => {
     if (onChat && openChat != '') {
       return (<Chat contant={openChat} />);
