@@ -1,6 +1,7 @@
 import User from "./User";
 import noadog from './noadog.jpg';
 
+
 class DataBase {
     constructor() {
         this.usersDataBase = new Map();
@@ -9,8 +10,8 @@ class DataBase {
     addUserToDataBase(key, user) {
         this.usersDataBase.set(key,user);
     }
-
 }
+
 
 const dataBase = new DataBase();
 dataBase.addUserToDataBase('noamit', new User('noamit', 'noa amit', 'noa1', noadog));

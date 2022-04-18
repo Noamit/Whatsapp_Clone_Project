@@ -1,22 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Sidebar.css'
 import { Link, PersonPlus } from 'react-bootstrap-icons'
 import img1 from './img1.jpg'
 import SingleSideChat from './SingleSideChat'
 import SideBarModal from './SideBarModal'
-import dataBase from './DataBase'
 
-function Sidebar({user, ifOnChat, contantName}) {
-
+function Sidebar({user}) {
 
   const [chatsArray, setChatsArray] = useState([]);
-
   const [openModel, setOpenModel] = useState(false);
+
+  const showChats = chatsArray.map((username)=> {return <SingleSideChat name = {username}/>})
 
   return (
     <>
     <div className='sideBarModal'>
-    {openModel && <SideBarModal close_modal={setOpenModel} />}
+    {openModel && <SideBarModal close_modal={setOpenModel} setterContactsArray = {setChatsArray} contactsArray ={chatsArray} />}
     </div>
 
     <div className='sidebar'>
@@ -28,12 +27,10 @@ function Sidebar({user, ifOnChat, contantName}) {
         </button>
       </div>
       <div className='sidebar_chats'>
-        {/* <SingleSideChat name={dataBase.usersDataBase.get(contantName).displayName} lastMessage={"love you love you love you love you love you love youlove you"} lastseen="11:54" ifOnChat = {ifOnChat}/>
-        <SingleSideChat name={dataBase.usersDataBase.get(contantName).displayName} lastMessage={"hello"} lastseen="11:54" ifOnChat = {ifOnChat}/> */}
+         {showChats}
       </div>
     </div>
     </>
-   
   )
 }
 
