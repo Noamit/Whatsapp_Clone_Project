@@ -10,6 +10,11 @@ function Sidebar({user}) {
   const [openModel, setOpenModel] = useState(false);
 
   return (
+    <>
+    <div className='sideBarModal'>
+    {openModel && <SideBarModal close_modal={setOpenModel} />}
+    </div>
+
     <div className='sidebar'>
       <div className='sidebar_header'>
         <img src={img1} className="rounded-circle" alt="user" />
@@ -27,8 +32,10 @@ function Sidebar({user}) {
         <SingleSideChat name="tomer" lastMessage={"loveyouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu "} lastseen="03:54" />
         <SingleSideChat name="tomer" lastMessage={"noa "} lastseen="03:54" />
       </div>
-      {openModel && <SideBarModal close_modal={setOpenModel} />}
+      
     </div>
+    </>
+   
   )
 }
 
