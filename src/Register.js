@@ -34,13 +34,12 @@ function Register() {
                 <input type="button" value="Register" className="btn btn-outline-secondary" onClick={() => {
                     Valid();
                     setOpenSuccessModel(true);
-                    new User(userName, displayName, password, './noadog.jpg');
-                    dataBase.addUserToDataBase(userName, User)
+                    dataBase.addUserToDataBase(userName, new User(userName, displayName, password, './noadog.jpg'));
                 }} />
             );
         } else {
             return (
-                <input type="button" value="Register" className="btn btn-outline-secondary" onClick={() => {setOpenErrorModel(true); Valid(); }} />
+                <input type="button" value="Register" className="btn btn-outline-secondary" onClick={() => { setOpenErrorModel(true); Valid(); }} />
             );
         }
     }
@@ -69,9 +68,10 @@ function Register() {
 
     return (
         <div className='login'>
-            {openSuccessModel && <RegisterSuccessModal close_modal={setOpenSuccessModel} />}
-            {openErrorModel && <RegisterErrorModal close_modal={setOpenErrorModel} message={errorDescription} />}
-
+            <div className='allModals'>
+                {openSuccessModel && <RegisterSuccessModal close_modal={setOpenSuccessModel} />}
+                {openErrorModel && <RegisterErrorModal close_modal={setOpenErrorModel} message={errorDescription} />}
+            </div>
             <div className='login_page'>
                 <div className='login_header'>
                     <div>NTM</div>
@@ -105,7 +105,6 @@ function Register() {
                             <label htmlFor="img" className="btn btn-dark">Click To Upload Profile Picture </label>
                             <input id="img" type="file" accept="image/png, image/jpeg" hidden />
                         </div>
-
 
                         <div className='login_buttom'>
                             {renderAuthButton()}

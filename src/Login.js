@@ -4,7 +4,7 @@ import './Login.css'
 import LoginModal from './LoginModal'
 import dataBase from './DataBase'
 
-function Login({userSetter}) {
+function Login({ userSetter }) {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userName, setUserName] = useState('')
@@ -20,12 +20,12 @@ function Login({userSetter}) {
         if (isLoggedIn) {
             return (
                 <Link to='/chat'>
-                    <input type="submit" value="login" className="btn btn-outline-secondary" onClick={()=> userSetter(userName)}/>
+                    <input type="submit" value="login" className="btn btn-outline-secondary" onClick={() => userSetter(userName)} />
                 </Link>
             );
         } else {
             return (
-                <input type="button" value="login" className="btn btn-outline-secondary" onClick={() => {setOpenModel(true);}} />
+                <input type="button" value="login" className="btn btn-outline-secondary" onClick={() => { setOpenModel(true); }} />
             );
         }
     }
@@ -38,6 +38,9 @@ function Login({userSetter}) {
 
     return (
         <div className='login'>
+            <div className='allModals'>
+                {openModel && <LoginModal close_modal={setOpenModel} />}
+            </div>
             <div className='login_page'>
                 <div className='login_header'>
                     NTM
@@ -52,7 +55,7 @@ function Login({userSetter}) {
                                 }} />
                         </div>
                         <div className='login_body_input'>
-                            <input placeholder="Password" className="login_input" id="pass" type="password" value={password} onChange={e => {setPassword(e.target.value);}} />
+                            <input placeholder="Password" className="login_input" id="pass" type="password" value={password} onChange={e => { setPassword(e.target.value); }} />
                         </div>
                         <div className='login_buttom'>
                             {renderAuthButton()}
@@ -69,7 +72,6 @@ function Login({userSetter}) {
                     </div>
                 </div>
             </div >
-            {openModel && <LoginModal close_modal={setOpenModel} />}
         </div >
     );
 

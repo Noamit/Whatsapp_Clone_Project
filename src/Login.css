@@ -85,3 +85,10 @@
     font-size: 15pt;
     color: #7c7c7c;
 }
+
+.sideBarModal {
+    position: absolute;
+    margin-top: 10%;
+    margin-left: 10%;
+    width: 80%;
+}
