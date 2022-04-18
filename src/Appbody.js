@@ -4,12 +4,12 @@ import Sidebar from './Sidebar';
 import './Appbody.css'
 
 
-function Appbody() {
+function Appbody({userChat}) {
 
   return (
     <div className="app">
       <div className="app_body">
-        <Sidebar/>
+        <Sidebar userName={userChat} />
         <Chat />
       </div>
     </div>

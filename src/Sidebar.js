@@ -5,7 +5,7 @@ import img1 from './img1.jpg'
 import SingleSideChat from './SingleSideChat'
 import SideBarModal from './SideBarModal'
 
-function Sidebar() {
+function Sidebar({user}) {
 
   const [openModel, setOpenModel] = useState(false);
 
@@ -13,8 +13,8 @@ function Sidebar() {
     <div className='sidebar'>
       <div className='sidebar_header'>
         <img src={img1} className="rounded-circle" alt="user" />
-        <div id="userName">Noa Amit</div>
-        <button id='presonPlus_button' data-bs-toggle="modal" data-bs-target="#sideBarModal" onClick={() => {setOpenModel(true); }}>
+        <div id="userName">{user}</div>
+        <button id='presonPlus_button' onClick={() => {setOpenModel(true); }}>
           <PersonPlus />
         </button>
       </div>

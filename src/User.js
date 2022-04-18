@@ -6,6 +6,7 @@ constructor(userName, displayName, password, img) {
         this.displayName = displayName;
         this.password = password;
         this.img = img;
+        this.userChats = new Map();
     }
 
     getUserName () {

@@ -1,16 +1,21 @@
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from './Login';
 import Register from './Register'
 import Appbody from './Appbody'
 
 function App() {
+
+  const [newUser, setNewUser] = useState('')
+
+
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Login />}></Route>
+          <Route path='/' element={<Login userSetter={setNewUser}/>}></Route>
           <Route path='/register' element={<Register />}></Route>
-          <Route path='/chat' element={<Appbody />}></Route>
+          <Route path='/chat' element={<Appbody userChat={newUser} />}></Route>
         </Routes>
       </BrowserRouter>
     </>

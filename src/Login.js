@@ -4,7 +4,7 @@ import './Login.css'
 import LoginModal from './LoginModal'
 import dataBase from './DataBase'
 
-function Login() {
+function Login({userSetter}) {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userName, setUserName] = useState('')
@@ -20,7 +20,7 @@ function Login() {
         if (isLoggedIn) {
             return (
                 <Link to='/chat'>
-                    <input type="submit" value="login" className="btn btn-outline-secondary" />
+                    <input type="submit" value="login" className="btn btn-outline-secondary" onClick={()=> userSetter(userName)}/>
                 </Link>
             );
         } else {
