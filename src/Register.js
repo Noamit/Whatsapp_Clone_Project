@@ -34,8 +34,8 @@ function Register() {
                 <input type="button" value="Register" className="btn btn-outline-secondary" onClick={() => {
                     Valid();
                     setOpenSuccessModel(true);
-                    new User(userName, displayName, password, './noadog.jpg');
-                    dataBase.addUserToDataBase(userName, User)
+                    
+                    dataBase.addUserToDataBase(userName, new User(userName, displayName, password, './noadog.jpg'));
                 }} />
             );
         } else {

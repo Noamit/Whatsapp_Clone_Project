@@ -1,11 +1,11 @@
 
 
 class User {
-constructor(userName, displayName, password, img) {
-        this.userName = userName;
-        this.displayName = displayName;
-        this.password = password;
-        this.img = img;
+constructor(userNameX, displayNameX, passwordX, imgX) {
+        this.userName = userNameX;
+        this.displayName = displayNameX;
+        this.password = passwordX;
+        this.img = imgX;
         this.userChats = new Map();
     }
 

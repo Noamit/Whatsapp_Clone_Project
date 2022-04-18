@@ -15,7 +15,7 @@ function RegisterSuccessModal(close_modal) {
             </Modal.Body>
 
             <Modal.Footer>
-                <Link to="/chat"><Button variant="secondary">OK</Button></Link>
+                <Link to="/"><Button variant="secondary">OK</Button></Link>
             </Modal.Footer>
         </Modal.Dialog>
     )
