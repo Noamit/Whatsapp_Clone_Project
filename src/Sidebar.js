@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import './Sidebar.css'
-import { PersonPlus } from 'react-bootstrap-icons'
+import { Link, PersonPlus } from 'react-bootstrap-icons'
 import img1 from './img1.jpg'
 import SingleSideChat from './SingleSideChat'
 import SideBarModal from './SideBarModal'
+import dataBase from './DataBase'
 
-function Sidebar({user}) {
+function Sidebar({user, ifOnChat, contantName}) {
+
+
+  const [chatsArray, setChatsArray] = useState([]);
 
   const [openModel, setOpenModel] = useState(false);
 
@@ -24,15 +28,9 @@ function Sidebar({user}) {
         </button>
       </div>
       <div className='sidebar_chats'>
-        <SingleSideChat name="tomer" lastMessage={"love you"} lastseen="03:54" />
-        <SingleSideChat name="tomer" lastMessage={"love you love you love you love you love you love youlove you"} lastseen="11:54" />
-        <SingleSideChat name="tomer" lastMessage={"love youuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu"} lastseen="03:54" />
-        <SingleSideChat name="tomer" lastMessage={"love youuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu youuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu youuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu youuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu"} lastseen="03:54" />
-        <SingleSideChat name="tomer" lastMessage={"loveyouuuuuhuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu "} lastseen="03:54" />
-        <SingleSideChat name="tomer" lastMessage={"loveyouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu "} lastseen="03:54" />
-        <SingleSideChat name="tomer" lastMessage={"noa "} lastseen="03:54" />
+        {/* <SingleSideChat name={dataBase.usersDataBase.get(contantName).displayName} lastMessage={"love you love you love you love you love you love youlove you"} lastseen="11:54" ifOnChat = {ifOnChat}/>
+        <SingleSideChat name={dataBase.usersDataBase.get(contantName).displayName} lastMessage={"hello"} lastseen="11:54" ifOnChat = {ifOnChat}/> */}
       </div>
-      
     </div>
     </>
    

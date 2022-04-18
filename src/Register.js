@@ -34,7 +34,6 @@ function Register() {
                 <input type="button" value="Register" className="btn btn-outline-secondary" onClick={() => {
                     Valid();
                     setOpenSuccessModel(true);
-                    
                     dataBase.addUserToDataBase(userName, new User(userName, displayName, password, './noadog.jpg'));
                 }} />
             );
@@ -106,7 +105,6 @@ function Register() {
                             <label htmlFor="img" className="btn btn-dark">Click To Upload Profile Picture </label>
                             <input id="img" type="file" accept="image/png, image/jpeg" hidden />
                         </div>
-
 
                         <div className='login_buttom'>
                             {renderAuthButton()}

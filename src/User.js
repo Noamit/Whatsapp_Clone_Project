@@ -1,5 +1,3 @@
-
-
 class User {
 constructor(userNameX, displayNameX, passwordX, imgX) {
         this.userName = userNameX;
