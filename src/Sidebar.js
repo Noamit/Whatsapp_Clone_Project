@@ -1,35 +1,42 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './Sidebar.css'
 import { Link, PersonPlus } from 'react-bootstrap-icons'
 import img1 from './img1.jpg'
 import SingleSideChat from './SingleSideChat'
 import SideBarModal from './SideBarModal'
+import ContactErrorModal from './ContactErrorModal';
 
-function Sidebar({user}) {
+function Sidebar({ user }) {
 
   const [chatsArray, setChatsArray] = useState([]);
   const [openModel, setOpenModel] = useState(false);
 
-  const showChats = chatsArray.map((username)=> {return <SingleSideChat name = {username}/>})
+  const [openErrorModel, setOpenErrorModel] = useState(() => false);
+  const [errorDescription, seterrorDescription] = useState('no');
+
+  const showChats = chatsArray.map((username) => { return <SingleSideChat name={username} /> })
 
   return (
     <>
-    <div className='sideBarModal'>
-    {openModel && <SideBarModal close_modal={setOpenModel} setterContactsArray = {setChatsArray} contactsArray ={chatsArray} />}
-    </div>
-
-    <div className='sidebar'>
-      <div className='sidebar_header'>
-        <img src={img1} className="rounded-circle" alt="user" />
-        <div id="userName">{user}</div>
-        <button id='presonPlus_button' onClick={() => {setOpenModel(true); }}>
-          <PersonPlus />
-        </button>
+      <div className='sideBarModal'>
+        {openModel && <SideBarModal close_modal={setOpenModel} setterContactsArray={setChatsArray} contactsArray={chatsArray} 
+        errorModalSetter = {setOpenErrorModel} errorMessage = {seterrorDescription} />}
       </div>
-      <div className='sidebar_chats'>
-         {showChats}
+      <div className='sideBarModal'>
+        {openErrorModel && <ContactErrorModal close_modal_error={setOpenErrorModel} message={errorDescription} />}
       </div>
-    </div>
+      <div className='sidebar'>
+        <div className='sidebar_header'>
+          <img src={img1} className="rounded-circle" alt="user" />
+          <div id="userName">{user}</div>
+          <button id='presonPlus_button' onClick={() => { setOpenModel(true); }}>
+            <PersonPlus />
+          </button>
+        </div>
+        <div className='sidebar_chats'>
+          {showChats}
+        </div>
+      </div>
     </>
   )
 }

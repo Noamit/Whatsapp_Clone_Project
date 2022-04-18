@@ -2,15 +2,21 @@ import React, { useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import dataBase from './DataBase';
 
-function SideBarModal({ close_modal, setterContactsArray, contactsArray}) {
+
+function SideBarModal({ close_modal, setterContactsArray, contactsArray, errorModalSetter, errorMessage}) {
 
     const [contactInfo, setContactInfo] = useState('');
+    
 
     const validNewContact = () => {
         if(dataBase.usersDataBase.has(contactInfo) && !contactsArray.includes(contactInfo)) {
             setterContactsArray( arr => [...arr, contactInfo])
+        } else if(dataBase.usersDataBase.has(contactInfo)) {
+            errorMessage('Chat Already Open')
+            errorModalSetter(() => true)
         } else {
-            console.log("no")
+            errorMessage('User Does Not Exsist')
+            errorModalSetter(() => true)
         }
     }
 
@@ -26,14 +32,12 @@ function SideBarModal({ close_modal, setterContactsArray, contactsArray}) {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <button onClick={() => { validNewContact(); close_modal(false); }}>Add</button>
+                    <Button onClick={() => {close_modal(false); validNewContact();}}>Add</Button>
 
-                    <button variant="secondary" onClick={() => { close_modal(false); }}>Close</button>
+                    <Button variant="secondary" onClick={() => { close_modal(false); }}>Close</Button>
                 </Modal.Footer>
-
             </Modal.Dialog>
             </div>
-
     );
 }
 export default SideBarModal;
