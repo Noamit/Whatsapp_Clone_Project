@@ -5,6 +5,7 @@ import RegisterErrorModal from './RegisterErrorModal';
 import RegisterSuccessModal from './RegisterSuccessModal';
 import User from './User';
 import dataBase from './DataBase'
+import defaultImg from './DefaultImage.jpg'
 
 function Register() {
 
@@ -13,7 +14,7 @@ function Register() {
     const [displayName, setDisplayName] = useState(() => '')
     const [password, setPassword] = useState(() => '')
     const [confirmedPassword, setcConfirmedPassword] = useState(() => '')
-    const [img, setImg] = useState(null)
+    const [img, setImg] = useState(defaultImg)
     const [openErrorModel, setOpenErrorModel] = useState(() => false);
     const [openSuccessModel, setOpenSuccessModel] = useState(() => false);
     const [errorDescription, seterrorDescription] = useState(() => 'please fill all the fields');
@@ -111,7 +112,7 @@ function Register() {
                         </div>
 
                         <div className='login_body_input'>
-                            <label htmlFor="img">Click To Upload Profile Picture </label>
+                            <label htmlFor="img" className='btn btn-dark'>Click To Upload Profile Picture </label>
                             <input id="img" type="file" accept="image/png, image/jpeg" hidden onChange={readImage} />
                         </div>
 
