@@ -52,7 +52,7 @@
 
 .message_time {
     margin-left: 10px;
-    font-size: x-small;
+    font-size: 12px;
     font-weight: 600;
     padding-bottom: 5px;
 }
@@ -134,7 +134,6 @@
     background-color: white;
     font-size: larger;
 }
-
 
 .send_img {
     width: 300px;
