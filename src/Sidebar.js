@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import './Sidebar.css'
 import { PersonPlus } from 'react-bootstrap-icons'
-import img1 from './img1.jpg'
 import SingleSideChat from './SingleSideChat'
 import SideBarModal from './SideBarModal'
 import ContactErrorModal from './ContactErrorModal';
