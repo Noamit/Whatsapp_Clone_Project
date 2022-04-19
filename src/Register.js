@@ -112,8 +112,8 @@ function Register() {
                         </div>
 
                         <div className='login_body_input'>
-                            <label htmlFor="img" className='btn btn-dark'>Click To Upload Profile Picture </label>
-                            <input id="img" type="file" accept="image/png, image/jpeg" hidden onChange={readImage} />
+                            <label htmlFor="img1" className='btn btn-dark'>Click To Upload Profile Picture </label>
+                            <input id="img1" type="file" accept="image/png, image/jpeg" hidden onChange={readImage} />
                         </div>
 
                         <div className='login_buttom'>

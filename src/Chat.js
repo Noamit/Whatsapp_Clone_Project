@@ -10,13 +10,15 @@ function Chat({ contact }) {
   const [input, setInput] = useState("")
   const [activeRecord, setActiveRecord] = useState(false)
   const [audioMessage, setAudioMessage] = useState("")
-  const [img, setImg] = useState(null)
-  const [imageMsg, setImageMsg] = useState(false)
+  const [file, setFile] = useState(() => null)
+  const [fileMsg, setFileMsg] = useState(() => false)
+  const [fileKind, setFileKind] = useState(() => '')
+  const [fileURL, setFileURL] = useState(() => null)
 
   const getTime = () => {
     let today = new Date();
     let hour = String(today.getHours()).padStart(2, '0');
-    let min = String(today.getMinutes() + 1).padStart(2, '0');
+    let min = String(today.getMinutes()).padStart(2, '0');
     return hour + ":" + min
   }
 
@@ -30,33 +32,42 @@ function Chat({ contact }) {
         <br />
         {input}
         <span className='message_time'>{getTime()}</span></p>)
-        setActiveRecord(false)
+
     }
-    else if(imageMsg) {
+    else if (fileMsg) {
       dataBase.usersDataBase.get(contact).userChats.push(<p className={`message ${true && 'recive_message'}`}>
-        <img className='send_img' src={img} alt='' />
+        {file}
         <br />
         {input}
         <span className='message_time'>{getTime()}</span></p>)
-        setImageMsg(false)
     }
-    else if(false){
-
-    }
-    else if(input.length > 0){
+    else if (input.length > 0) {
       dataBase.usersDataBase.get(contact).userChats.push(<p className={`message ${true && 'recive_message'}`}>
         {input}
         <span className='message_time'>{getTime()}</span></p>)
-    } 
+    }
+    setFileMsg(() => false)
+    setFileKind(() => '')
+    setFileURL(() => null)
+    setFile(() => null)
+    setActiveRecord(false)
     setInput("")
   }
 
 
-  const getImg = (e) => {
+  const getFile = (e, kind) => {
     if (e.target.files) {
       if (e.target.files[0]) {
-        setImg(URL.createObjectURL(e.target.files[0]))
-        setImageMsg(true)
+        setFileMsg(true)
+        setFileKind(kind)
+        const URLfile = URL.createObjectURL(e.target.files[0])
+        if (kind === "Video") {
+          setFile(<video controls="controls" src={URLfile} type="video/*" className='send_img' alt='' />)
+        }
+        else {
+          setFile(<img src={URLfile} className='send_img' alt='' />)
+        }
+        setFileURL(URLfile)
       }
     }
   }
@@ -80,12 +91,19 @@ function Chat({ contact }) {
           </button>
           <ul className="dropdown-menu">
             <div className='buttons_optaions'>
-              <button>&nbsp;<CameraReels />&nbsp;</button>
-              <button onClick={()=>setActiveRecord(true)}>&nbsp;<Mic />&nbsp;</button>
+
+              <button>
+                <label htmlFor="video">&nbsp;<CameraReels />&nbsp;</label>
+                <input id="video" type="file" accept="video/*" hidden onChange={(e) => getFile(e, "Video")} />
+              </button>
+
+              <button onClick={() => setActiveRecord(true)}>&nbsp;<Mic />&nbsp;</button>
+
               <button>
                 <label htmlFor="img">&nbsp;<Image />&nbsp;</label>
-                <input id="img" type="file" accept="image/png, image/jpeg" hidden onChange={getImg} />
+                <input id="img" type="file" accept="image/png, image/jpeg" hidden onChange={(e) => getFile(e, "Image")} />
               </button>
+
             </div>
           </ul>
         </div>
@@ -96,7 +114,7 @@ function Chat({ contact }) {
         </form>
       </div>
       {activeRecord && <ModalRecord modalSetter={setActiveRecord} messageSetter={setAudioMessage} time={getTime} />}
-      {imageMsg && <ModalImage modalSetter={setImageMsg} image={img}/>}
+      {fileMsg && <ModalImage modalSetter={setFileMsg} fileToSend={fileURL} kind={fileKind} />}
     </div>
   )
 }
