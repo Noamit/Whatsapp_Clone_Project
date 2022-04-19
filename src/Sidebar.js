@@ -12,22 +12,24 @@ function Sidebar({ user, chatWith }) {
   const [openModel, setOpenModel] = useState(false);
 
   const [openErrorModel, setOpenErrorModel] = useState(() => false);
-  const [errorDescription, seterrorDescription] = useState('no');
+  const [errorDescription, seterrorDescription] = useState('');
 
-  const showChats = chatsArray.map((username) => { return <SingleSideChat name={username} chatWithX = {chatWith}/> })
+
+  const showChats = chatsArray.map((username) => { return <SingleSideChat name={username} chatWithX={chatWith} /> })
+
 
   return (
     <>
       <div className='sidebar'>
-      <div className='sideBarModal'>
-        {openModel && <SideBarModal close_modal={setOpenModel} setterContactsArray={setChatsArray} contactsArray={chatsArray} 
-        errorModalSetter = {setOpenErrorModel} errorMessage = {seterrorDescription} />}
-      </div>
-      <div className='sideBarModal'>
-        {openErrorModel && <ContactErrorModal close_modal_error={setOpenErrorModel} message={errorDescription} />}
-      </div>
+        <div className='sideBarModal'>
+          {openModel && <SideBarModal close_modal={setOpenModel} setterContactsArray={setChatsArray} contactsArray={chatsArray}
+            errorModalSetter={setOpenErrorModel} errorMessage={seterrorDescription} />}
+        </div>
+        <div className='sideBarModal'>
+          {openErrorModel && <ContactErrorModal close_modal_error={setOpenErrorModel} message={errorDescription} />}
+        </div>
         <div className='sidebar_header'>
-        <img src={dataBase.usersDataBase.get(user).img} className="rounded-circle" alt="user" />
+          <img src={dataBase.usersDataBase.get(user).img} className="rounded-circle" alt="user" />
           <div id="userName">{dataBase.usersDataBase.get(user).displayName}</div>
           <button id='presonPlus_button' onClick={() => { setOpenModel(true); }}>
             <PersonPlus />

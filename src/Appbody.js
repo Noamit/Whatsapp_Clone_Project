@@ -7,10 +7,11 @@ import EmptyChat from './EmptyChat';
 function Appbody({userChat}) {
 
   const [openChatWith, setOpenChatWith] = useState('');
+  const [updateLastMsg, setUpdateLastMsg] = useState(true);
 
   const renderCharOrEmtyChat = () => {
     if (openChatWith != '') {
-      return (<Chat contact={openChatWith} />);
+      return (<Chat contact={openChatWith} setterLastMsgInArray={setUpdateLastMsg} lastMsgInArray={updateLastMsg}/>);
     } else {
       return (<EmptyChat />);
     }
@@ -19,7 +20,7 @@ function Appbody({userChat}) {
   return (
     <div className="app">
       <div className="app_body">
-        <Sidebar user={userChat} chatWith={setOpenChatWith}  />
+        <Sidebar user={userChat} chatWith={setOpenChatWith} />
         {renderCharOrEmtyChat()}
       </div>
     </div>

@@ -11,12 +11,12 @@ function SingleSideChat({ name, chatWithX }) {
                 <div className='SingleSideChat_info'>
                     <div className='a'>
                         <div id="info_name">{dataBase.usersDataBase.get(name).displayName} </div>
-                        <p id="info_message">hello</p>
+                        <p id="info_message">{dataBase.usersDataBase.get(name).lastMsg}</p>
                     </div>
                 </div>
-                <div id="info_lastSeen">02:00</div>
+                <div id="info_lastSeen">{dataBase.usersDataBase.get(name).lastMsgTime}</div>
             </label>
-            <input type="button" id={name} onClick={() => { chatWithX(name) }} hidden />
+            <input type="button" id={name} onClick={() => {chatWithX(name)}} hidden />
         </>
 
     )

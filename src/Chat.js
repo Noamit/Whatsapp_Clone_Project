@@ -6,7 +6,7 @@ import dataBase from './DataBase'
 import ModalImage from './ModalImage'
 
 
-function Chat({ contact }) {
+function Chat({ contact ,setterLastMsgInArray, lastMsgInArray}) {
   const [input, setInput] = useState("")
   const [activeRecord, setActiveRecord] = useState(false)
   const [audioMessage, setAudioMessage] = useState("")
@@ -16,7 +16,7 @@ function Chat({ contact }) {
   const getTime = () => {
     let today = new Date();
     let hour = String(today.getHours()).padStart(2, '0');
-    let min = String(today.getMinutes() + 1).padStart(2, '0');
+    let min = String(today.getMinutes()).padStart(2, '0');
     return hour + ":" + min
   }
 
@@ -30,25 +30,39 @@ function Chat({ contact }) {
         <br />
         {input}
         <span className='message_time'>{getTime()}</span></p>)
-        setActiveRecord(false)
+
+      dataBase.usersDataBase.get(contact).lastMsg = "VOICE MESSAGE";
+      dataBase.usersDataBase.get(contact).lastMsgTime = getTime();
+
+      setActiveRecord(false)
     }
-    else if(imageMsg) {
+    else if (imageMsg) {
       dataBase.usersDataBase.get(contact).userChats.push(<p className={`message ${true && 'recive_message'}`}>
         <img className='send_img' src={img} alt='' />
         <br />
         {input}
         <span className='message_time'>{getTime()}</span></p>)
-        setImageMsg(false)
-    }
-    else if(false){
 
+      dataBase.usersDataBase.get(contact).lastMsg = "PHOTO";
+      dataBase.usersDataBase.get(contact).lastMsgTime = getTime();
+
+      setImageMsg(false)
     }
-    else if(input.length > 0){
+    else if (false) {
+
+      // dataBase.usersDataBase.get(contact).lastMsg = "VIDEO" ;
+      // dataBase.usersDataBase.get(contact).lastMsgTime = getTime();
+    } 
+    else if (input.length > 0) {
       dataBase.usersDataBase.get(contact).userChats.push(<p className={`message ${true && 'recive_message'}`}>
         {input}
         <span className='message_time'>{getTime()}</span></p>)
-    } 
+
+      dataBase.usersDataBase.get(contact).lastMsg = input ;
+      dataBase.usersDataBase.get(contact).lastMsgTime = getTime();
+    }
     setInput("")
+    setterLastMsgInArray(!lastMsgInArray);
   }
 
 
@@ -81,7 +95,7 @@ function Chat({ contact }) {
           <ul className="dropdown-menu">
             <div className='buttons_optaions'>
               <button>&nbsp;<CameraReels />&nbsp;</button>
-              <button onClick={()=>setActiveRecord(true)}>&nbsp;<Mic />&nbsp;</button>
+              <button onClick={() => setActiveRecord(true)}>&nbsp;<Mic />&nbsp;</button>
               <button>
                 <label htmlFor="img">&nbsp;<Image />&nbsp;</label>
                 <input id="img" type="file" accept="image/png, image/jpeg" hidden onChange={getImg} />
@@ -96,7 +110,7 @@ function Chat({ contact }) {
         </form>
       </div>
       {activeRecord && <ModalRecord modalSetter={setActiveRecord} messageSetter={setAudioMessage} time={getTime} />}
-      {imageMsg && <ModalImage modalSetter={setImageMsg} image={img}/>}
+      {imageMsg && <ModalImage modalSetter={setImageMsg} image={img} />}
     </div>
   )
 }
