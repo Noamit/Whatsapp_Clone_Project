@@ -15,8 +15,6 @@ function SingleSideChat({name}) {
             <div id="info_lastSeen">02:00</div>
             
             <button id="chatButton" onClick={()=>true} hidden/>
-            
-
         </label>
     )
 }

@@ -21,8 +21,6 @@ function Appbody({ userChat }) {
   return (
     <div className="app">
       <div className="app_body">
-        {/* <Sidebar user={userChat} ifOnChat={setOnChat} contantName={setOpenChat} /> */}
-
         <Sidebar user={userChat} ifOnChat={setOnChat} contantName='tomer' />
         {renderCharOrEmtyChat()}
       </div>
