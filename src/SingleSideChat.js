@@ -13,7 +13,7 @@ function SingleSideChat({name, chatWithX}) {
                 </div>
             </div>
             <div id="info_lastSeen">02:00</div>
-            <button id="chatButton" onClick={()=>{chatWithX(name);}} hidden/>
+            <button id="chatButton" onClick={() => { chatWithX(name) }} hidden/>
         </label>
     )
 }
