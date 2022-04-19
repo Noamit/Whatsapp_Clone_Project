@@ -8,7 +8,6 @@ import dataBase from './DataBase'
 
 function Chat({ contact }) {
   const [input, setInput] = useState("")
-  const [message, setMessage] = useState('')
   const [activeRecord, setActiveRecord] = useState(() => false)
   const [audioMessage, setAudioMessage] = useState("")
 
@@ -25,32 +24,27 @@ function Chat({ contact }) {
     e.preventDefault();
     if(!activeRecord) {
       if (input.length > 0) {
-    setMessage(() => (<p className={`message ${true && 'recive_message'}`}>
+    dataBase.usersDataBase.get(contact).userChats.push((<p className={`message ${true && 'recive_message'}`}>
     {input}
     <span className='message_time'>{getTime()}</span></p>))
-    dataBase.usersDataBase.get(contact).userChats[contact].push(message)
     }}
     else{
-      setMessage(() => (<p className={`message ${true && 'recive_message'}`}>
+      dataBase.usersDataBase.get(contact).userChats.push(<p className={`message ${true && 'recive_message'}`}>
       {audioMessage}
       <br/>
       {input}
-      <span className='message_time'>{getTime()}</span></p>))
-      dataBase.usersDataBase.get(contact).userChats.push(message)
+      <span className='message_time'>{getTime()}</span></p>)
     }
     setActiveRecord(false)
     setInput("")
   }
     
-   
-
   return (
     <div className='chat'>
       <div className='chat_header'>
         <img src={img1} id="rounded-circle_chat" className="rounded-circle" alt='user' />
         <div className='header_info'>
-          <div id='header_info_name'>tomer</div>
-
+          <div id='header_info_name'> {dataBase.usersDataBase.get(contact).displayName}</div>
           <p>Last seen at....</p>
         </div>
       </div>

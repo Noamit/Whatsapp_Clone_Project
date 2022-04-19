@@ -5,12 +5,12 @@ import './Appbody.css'
 import EmptyChat from './EmptyChat';
 
 function Appbody({ userChat }) {
-  
+
   const [openChatWith, setOpenChatWith] = useState('');
 
   const renderCharOrEmtyChat = () => {
     if (openChatWith != '') {
-      return (<Chat contant={openChatWith} />);
+      return (<Chat contact={openChatWith} />);
     } else {
       return (<EmptyChat />);
     }
