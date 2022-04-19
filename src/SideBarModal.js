@@ -21,7 +21,7 @@ function SideBarModal({ close_modal, setterContactsArray, contactsArray, errorMo
     }
 
     return (
-        <div className='allModal'>
+        <div className='leftModal'>
             <Modal.Dialog className='modal-dialog'>
                 <Modal.Header>
                     <Modal.Title>Add New Contant</Modal.Title>

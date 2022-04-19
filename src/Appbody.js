@@ -4,7 +4,7 @@ import Sidebar from './Sidebar';
 import './Appbody.css'
 import EmptyChat from './EmptyChat';
 
-function Appbody({ userChat }) {
+function Appbody({userChat}) {
 
   const [openChatWith, setOpenChatWith] = useState('');
 

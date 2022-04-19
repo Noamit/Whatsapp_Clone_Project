@@ -45,7 +45,6 @@ function Chat({ contact }) {
         <img src={img1} id="rounded-circle_chat" className="rounded-circle" alt='user' />
         <div className='header_info'>
           <div id='header_info_name'> {dataBase.usersDataBase.get(contact).displayName}</div>
-          <p>Last seen at....</p>
         </div>
       </div>
       <div className='chat_body'>

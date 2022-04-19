@@ -21,7 +21,6 @@
     border-bottom: 1px solid lightgray;
     text-overflow: ellipsis;
     white-space: nowrap;
-    
 }
 
 #userName {
@@ -34,4 +33,9 @@
     border: none;
     cursor: pointer;
     font-size: 25px;
+}
+
+.sideBarModal {
+    position: absolute;
+    width: 80%; 
 }
