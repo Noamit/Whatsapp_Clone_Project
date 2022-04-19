@@ -28,7 +28,7 @@ function Sidebar({ user, chatWith }) {
         {openErrorModel && <ContactErrorModal close_modal_error={setOpenErrorModel} message={errorDescription} />}
       </div>
         <div className='sidebar_header'>
-          <img src={img1} className="rounded-circle" alt="user" />
+        <img src={dataBase.usersDataBase.get(user).img} className="rounded-circle" alt="user" />
           <div id="userName">{dataBase.usersDataBase.get(user).displayName}</div>
           <button id='presonPlus_button' onClick={() => { setOpenModel(true); }}>
             <PersonPlus />
