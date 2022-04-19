@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './Sidebar.css'
 import { PersonPlus } from 'react-bootstrap-icons'
+import img1 from './img1.jpg'
 import SingleSideChat from './SingleSideChat'
 import SideBarModal from './SideBarModal'
 import ContactErrorModal from './ContactErrorModal';
@@ -14,10 +15,11 @@ function Sidebar({ user, chatWith }) {
   const [openErrorModel, setOpenErrorModel] = useState(() => false);
   const [errorDescription, seterrorDescription] = useState('no');
 
-  const showChats = chatsArray.map((username) => { return <SingleSideChat name={username} chatWithX = {chatWith}/> })
+  const showChats = chatsArray.map((username) => { console.log(username); return <SingleSideChat name={username} chatWithX = {chatWith}/> })
 
   return (
     <>
+      <div className='sidebar'>
       <div className='sideBarModal'>
         {openModel && <SideBarModal close_modal={setOpenModel} setterContactsArray={setChatsArray} contactsArray={chatsArray} 
         errorModalSetter = {setOpenErrorModel} errorMessage = {seterrorDescription} />}
@@ -25,9 +27,8 @@ function Sidebar({ user, chatWith }) {
       <div className='sideBarModal'>
         {openErrorModel && <ContactErrorModal close_modal_error={setOpenErrorModel} message={errorDescription} />}
       </div>
-      <div className='sidebar'>
         <div className='sidebar_header'>
-          <img src={dataBase.usersDataBase.get(user).img} className="rounded-circle" alt="user" />
+        <img src={dataBase.usersDataBase.get(user).img} className="rounded-circle" alt="user" />
           <div id="userName">{dataBase.usersDataBase.get(user).displayName}</div>
           <button id='presonPlus_button' onClick={() => { setOpenModel(true); }}>
             <PersonPlus />
