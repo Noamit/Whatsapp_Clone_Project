@@ -55,6 +55,12 @@ function Chat({ contact, setterLastMsgInArray, lastMsgInArray }) {
       dataBase.usersDataBase.get(contact).lastMsg = input;
       dataBase.usersDataBase.get(contact).lastMsgTime = getTime();
     }
+    
+    setFileMsg(() => false)
+    setFileKind(() => '')
+    setFileURL(() => null)
+    setFile(() => null)
+    setActiveRecord(false)
     setInput("")
     setterLastMsgInArray(!lastMsgInArray);
   }
