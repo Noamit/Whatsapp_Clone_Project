@@ -15,6 +15,9 @@ function Chat({ contact, setterLastMsgInArray, lastMsgInArray }) {
   const [fileKind, setFileKind] = useState(() => '')
   const [fileURL, setFileURL] = useState(() => null)
 
+  const [imageVal, setImageVal] = useState('')
+  const [videoVal, setVideoVal] = useState('')
+
   const getTime = () => {
     let today = new Date();
     let hour = String(today.getHours()).padStart(2, '0');
@@ -104,17 +107,17 @@ function Chat({ contact, setterLastMsgInArray, lastMsgInArray }) {
           </button>
           <ul className="dropdown-menu">
             <div className='buttons_optaions'>
-              <button>
+              <button onClick={() => setVideoVal('')}>
                 <label htmlFor="video">&nbsp;<CameraReels />&nbsp;</label>
-                <input id="video" type="file" accept="video/*" hidden onChange={(e) => getFile(e, "Video")} />
+                <input id="video" type="file" accept="video/*" hidden value={videoVal} onChange={(e) => getFile(e, "Video")} />
               </button>
 
               <button onClick={() => setActiveRecord(true)}>&nbsp;<Mic />&nbsp;</button>
 
-              <button>
+              <button onClick={() => setImageVal('')}>
                 <label htmlFor="img">&nbsp;<Image />&nbsp;</label>
-                <input id="img" type="file" accept="image/png, image/jpeg" hidden onChange={(e) => getFile(e, "Image")} />
-              </button>
+                <input id="img" type="file" accept="image/png, image/jpeg" hidden value={imageVal} onChange={(e) => {getFile(e, "Image"); console.log("change") }} />
+              </button >
             </div>
           </ul>
         </div>
