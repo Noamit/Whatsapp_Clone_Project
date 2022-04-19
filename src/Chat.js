@@ -6,7 +6,7 @@ import dataBase from './DataBase'
 import ModalImage from './ModalImage'
 
 
-function Chat({ contact }) {
+function Chat({ contact, setterLastMsgInArray, lastMsgInArray }) {
   const [input, setInput] = useState("")
   const [activeRecord, setActiveRecord] = useState(false)
   const [audioMessage, setAudioMessage] = useState("")
@@ -33,6 +33,8 @@ function Chat({ contact }) {
         {input}
         <span className='message_time'>{getTime()}</span></p>)
 
+      dataBase.usersDataBase.get(contact).lastMsg = "VOICE MESSAGE";
+      dataBase.usersDataBase.get(contact).lastMsgTime = getTime();
     }
     else if (fileMsg) {
       dataBase.usersDataBase.get(contact).userChats.push(<p className={`message ${true && 'recive_message'}`}>
@@ -40,18 +42,27 @@ function Chat({ contact }) {
         <br />
         {input}
         <span className='message_time'>{getTime()}</span></p>)
+
+      dataBase.usersDataBase.get(contact).lastMsg = "IMAGE";
+      dataBase.usersDataBase.get(contact).lastMsgTime = getTime();
     }
+
     else if (input.length > 0) {
       dataBase.usersDataBase.get(contact).userChats.push(<p className={`message ${true && 'recive_message'}`}>
         {input}
         <span className='message_time'>{getTime()}</span></p>)
+
+      dataBase.usersDataBase.get(contact).lastMsg = input;
+      dataBase.usersDataBase.get(contact).lastMsgTime = getTime();
     }
+    
     setFileMsg(() => false)
     setFileKind(() => '')
     setFileURL(() => null)
     setFile(() => null)
     setActiveRecord(false)
     setInput("")
+    setterLastMsgInArray(!lastMsgInArray);
   }
 
 
@@ -72,6 +83,8 @@ function Chat({ contact }) {
     }
   }
 
+
+
   return (
     <div className='chat'>
       <div className='chat_header'>
@@ -91,7 +104,6 @@ function Chat({ contact }) {
           </button>
           <ul className="dropdown-menu">
             <div className='buttons_optaions'>
-
               <button>
                 <label htmlFor="video">&nbsp;<CameraReels />&nbsp;</label>
                 <input id="video" type="file" accept="video/*" hidden onChange={(e) => getFile(e, "Video")} />
@@ -103,7 +115,6 @@ function Chat({ contact }) {
                 <label htmlFor="img">&nbsp;<Image />&nbsp;</label>
                 <input id="img" type="file" accept="image/png, image/jpeg" hidden onChange={(e) => getFile(e, "Image")} />
               </button>
-
             </div>
           </ul>
         </div>
@@ -114,8 +125,7 @@ function Chat({ contact }) {
         </form>
       </div>
       {activeRecord && <ModalRecord modalSetter={setActiveRecord} messageSetter={setAudioMessage} time={getTime} />}
-      {fileMsg && <ModalImage modalSetter={setFileMsg} fileToSend={fileURL} kind={fileKind} />}
-    </div>
+      {fileMsg && <ModalImage modalSetter={setFileMsg} fileToSend={fileURL} kind={fileKind} />}    </div>
   )
 }
 export default Chat
