@@ -14,7 +14,7 @@ function Sidebar({ user, chatWith }) {
   const [openErrorModel, setOpenErrorModel] = useState(() => false);
   const [errorDescription, seterrorDescription] = useState('no');
 
-  const showChats = chatsArray.map((username) => { console.log(username); return <SingleSideChat name={username} chatWithX = {chatWith}/> })
+  const showChats = chatsArray.map((username) => { return <SingleSideChat name={username} chatWithX = {chatWith}/> })
 
   return (
     <>
