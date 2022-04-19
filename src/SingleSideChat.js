@@ -2,9 +2,9 @@ import React from 'react'
 import './SingleSideChat.css'
 import img2 from './img2.jpg'
 
-function SingleSideChat({name}) {
+function SingleSideChat({name, chatWithX}) {
     return (
-        <label className='SingleSideChat' for="chatButton">
+        <label className='SingleSideChat' htmlFor="chatButton">
             <img src={img2} className="rounded-circle" alt="new contant" />
             <div className='SingleSideChat_info'>
                 <div className='a'>
@@ -13,8 +13,7 @@ function SingleSideChat({name}) {
                 </div>
             </div>
             <div id="info_lastSeen">02:00</div>
-            
-            <button id="chatButton" onClick={()=>true} hidden/>
+            <button id="chatButton" onClick={()=>{chatWithX(name);}} hidden/>
         </label>
     )
 }

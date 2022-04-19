@@ -6,7 +6,7 @@ import SingleSideChat from './SingleSideChat'
 import SideBarModal from './SideBarModal'
 import ContactErrorModal from './ContactErrorModal';
 
-function Sidebar({ user }) {
+function Sidebar({ user, chatWith }) {
 
   const [chatsArray, setChatsArray] = useState([]);
   const [openModel, setOpenModel] = useState(false);
@@ -14,7 +14,7 @@ function Sidebar({ user }) {
   const [openErrorModel, setOpenErrorModel] = useState(() => false);
   const [errorDescription, seterrorDescription] = useState('no');
 
-  const showChats = chatsArray.map((username) => { return <SingleSideChat name={username} /> })
+  const showChats = chatsArray.map((username) => { return <SingleSideChat name={username} chatWithX = {chatWith}/> })
 
   return (
     <>

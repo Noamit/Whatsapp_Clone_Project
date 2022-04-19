@@ -19,7 +19,7 @@ function Chat({ contact }) {
     return hour + ":" + min
   }
 
-  const showMessage = dataBase.usersDataBase.userChats.map((msg) => { return msg })
+  const showMessage = dataBase.usersDataBase.get(contact).userChats.map((msg) => { return msg })
 
   const newMessage = (e) => {
     e.preventDefault();
@@ -28,7 +28,7 @@ function Chat({ contact }) {
     setMessage(() => (<p className={`message ${true && 'recive_message'}`}>
     {input}
     <span className='message_time'>{getTime()}</span></p>))
-    dataBase.usersDataBase.userChats.push(message)
+    dataBase.usersDataBase.get(contact).userChats[contact].push(message)
     }}
     else{
       setMessage(() => (<p className={`message ${true && 'recive_message'}`}>
@@ -36,7 +36,7 @@ function Chat({ contact }) {
       <br/>
       {input}
       <span className='message_time'>{getTime()}</span></p>))
-      dataBase.usersDataBase.userChats.push(message)
+      dataBase.usersDataBase.get(contact).userChats.push(message)
     }
     setActiveRecord(false)
     setInput("")
@@ -49,7 +49,7 @@ function Chat({ contact }) {
       <div className='chat_header'>
         <img src={img1} id="rounded-circle_chat" className="rounded-circle" alt='user' />
         <div className='header_info'>
-          <div id='header_info_name' >tomer</div>
+          <div id='header_info_name'>tomer</div>
 
           <p>Last seen at....</p>
         </div>
