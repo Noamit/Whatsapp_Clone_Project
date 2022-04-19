@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import './Sidebar.css'
 import { PersonPlus } from 'react-bootstrap-icons'
-import img1 from './img1.jpg'
 import SingleSideChat from './SingleSideChat'
 import SideBarModal from './SideBarModal'
 import ContactErrorModal from './ContactErrorModal';
+import dataBase from './DataBase'
 
 function Sidebar({ user, chatWith }) {
 
@@ -27,7 +27,7 @@ function Sidebar({ user, chatWith }) {
       </div>
       <div className='sidebar'>
         <div className='sidebar_header'>
-          <img src={img1} className="rounded-circle" alt="user" />
+          <img src={dataBase.usersDataBase.get(user).img} className="rounded-circle" alt="user" />
           <div id="userName">{user}</div>
           <button id='presonPlus_button' onClick={() => { setOpenModel(true); }}>
             <PersonPlus />

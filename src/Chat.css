@@ -129,3 +129,10 @@
     background-color: white;
     font-size: larger;
 }
+
+
+.send_img {
+    width: 300px;
+    height: 300px;
+    cursor: pointer;
+}

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './Login.css'
 import RegisterErrorModal from './RegisterErrorModal';
 import RegisterSuccessModal from './RegisterSuccessModal';
-
 import User from './User';
 import dataBase from './DataBase'
 
@@ -14,6 +13,7 @@ function Register() {
     const [displayName, setDisplayName] = useState(() => '')
     const [password, setPassword] = useState(() => '')
     const [confirmedPassword, setcConfirmedPassword] = useState(() => '')
+    const [img, setImg] = useState(null)
     const [openErrorModel, setOpenErrorModel] = useState(() => false);
     const [openSuccessModel, setOpenSuccessModel] = useState(() => false);
     const [errorDescription, seterrorDescription] = useState(() => 'please fill all the fields');
@@ -34,7 +34,7 @@ function Register() {
                 <input type="button" value="Register" className="btn btn-outline-secondary" onClick={() => {
                     Valid();
                     setOpenSuccessModel(true);
-                    dataBase.addUserToDataBase(userName, new User(userName, displayName, password, './noadog.jpg'));
+                    dataBase.addUserToDataBase(userName, new User(userName, displayName, password, img));
                 }} />
             );
         } else {
@@ -64,6 +64,15 @@ function Register() {
 
     const checkPassword = () => {
         return /[a-zA-Z]/.test(password) && /[0-9]/.test(password);
+    }
+
+
+    const readImage = (e) => {
+        if(e.target.files){
+            if(e.target.files[0]){
+                setImg(URL.createObjectURL(e.target.files[0]));
+            }
+        }
     }
 
     return (
@@ -102,8 +111,8 @@ function Register() {
                         </div>
 
                         <div className='login_body_input'>
-                            <label htmlFor="img" className="btn btn-dark">Click To Upload Profile Picture </label>
-                            <input id="img" type="file" accept="image/png, image/jpeg" hidden />
+                            <label htmlFor="img">Click To Upload Profile Picture </label>
+                            <input id="img" type="file" accept="image/png, image/jpeg" hidden onChange={readImage} />
                         </div>
 
                         <div className='login_buttom'>

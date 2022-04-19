@@ -1,11 +1,11 @@
 import React from 'react'
 import './SingleSideChat.css'
-import img2 from './img2.jpg'
+import dataBase from './DataBase'
 
 function SingleSideChat({name, chatWithX}) {
     return (
         <label className='SingleSideChat' htmlFor="chatButton">
-            <img src={img2} className="rounded-circle" alt="new contant" />
+            <img src={dataBase.usersDataBase.get(name).img} className="rounded-circle" alt="new contant" />
             <div className='SingleSideChat_info'>
                 <div className='a'>
                     <div id="info_name">{name} </div>
