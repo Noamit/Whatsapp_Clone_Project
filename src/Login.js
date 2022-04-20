@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Login.css'
-import LoginModal from './LoginModal'
+import './cssFiles/Login.css'
+import LoginModal from './Modals/LoginModal'
 import dataBase from './DataBase'
 
 //Login component that implement the logic of 

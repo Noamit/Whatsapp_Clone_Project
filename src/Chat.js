@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import './Chat.css'
+import './cssFiles/Chat.css'
 import { Paperclip, CameraReels, Mic, Image } from 'react-bootstrap-icons'
-import ModalRecord from './ModalRecord'
+import ModalRecord from './Modals/ModalRecord'
 import dataBase from './DataBase'
-import ModalImage from './ModalImage'
+import ModalImage from './Modals/ModalImage'
 
 
 // the chat component that implement the logic of all the messages.

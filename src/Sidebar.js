@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import './Sidebar.css'
+import './cssFiles/Sidebar.css'
 import { PersonPlus } from 'react-bootstrap-icons'
 import SingleSideChat from './SingleSideChat'
-import SideBarModal from './SideBarModal'
-import ContactErrorModal from './ContactErrorModal';
+import SideBarModal from './Modals/SideBarModal'
+import ContactErrorModal from './Modals/ContactErrorModal';
 import dataBase from './DataBase'
 
 function Sidebar({ user, chatWith }) {

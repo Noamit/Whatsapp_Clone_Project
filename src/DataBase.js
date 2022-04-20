@@ -9,7 +9,7 @@ import mommyVideo from './photosAndFiles/mommyvideo.mp4'
 import audioFile from './photosAndFiles/audio.mp3'
 import noadog from './photosAndFiles/dog.jpg';
 
-import './Chat.css'
+import './cssFiles/Chat.css'
 
 //DataBase to manage all the users and their chats with the messages.
 
