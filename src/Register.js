@@ -5,7 +5,8 @@ import RegisterErrorModal from './RegisterErrorModal';
 import RegisterSuccessModal from './RegisterSuccessModal';
 import User from './User';
 import dataBase from './DataBase'
-import defaultImg from './DefaultImage.jpg'
+
+import defaultImg from './photosAndFiles/DefaultImage.jpg'
 
 function Register() {
 

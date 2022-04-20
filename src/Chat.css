@@ -76,7 +76,7 @@ CSS File to Design the chat
 
 .chat_body {
     flex: 1;
-    background-image: url("whatappimg.png");
+    background-image: url("photosAndFiles/whatappimg.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
