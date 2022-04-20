@@ -1,7 +1,10 @@
+/* CSS File to Design the Login page and the register page */
+
+
 .login {
     display: grid;
     background-color: rgb(231, 222, 222);
-    background-image: url('background3.png');
+    background-image: url('photosAndFiles/background3.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -85,3 +88,4 @@
     font-size: 15pt;
     color: #7c7c7c;
 }
+

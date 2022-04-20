@@ -1,31 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Sidebar.css'
 import { PersonPlus } from 'react-bootstrap-icons'
-import img1 from './img1.jpg'
 import SingleSideChat from './SingleSideChat'
+import SideBarModal from './SideBarModal'
+import ContactErrorModal from './ContactErrorModal';
+import dataBase from './DataBase'
 
-function Sidebar() {
+function Sidebar({ user, chatWith }) {
+
+  const [chatsArray, setChatsArray] = useState([]);
+  const [openModel, setOpenModel] = useState(false);
+
+  const [openErrorModel, setOpenErrorModel] = useState(() => false);
+  const [errorDescription, seterrorDescription] = useState('');
+
+  //Array to save all the Chats 
+  const showChats = chatsArray.map((username) => { return <SingleSideChat name={username} chatWithX={chatWith} /> })
+
+
+  //returning the html that describe the sidebar with all the logic inside(as function calls).
   return (
-    <div className='sidebar'>
-      <div className='sidebar_header'>
-        <img src={img1} className="rounded-circle" alt="user" />
-        <div id="userName">Noa Amit</div>
-        <button id='presonPlus_button'>
-          <PersonPlus />
-        </button>
+    <>
+      <div className='sidebar'>
+        <div className='sideBarModal'>
+          {openModel && <SideBarModal close_modal={setOpenModel} setterContactsArray={setChatsArray} contactsArray={chatsArray}
+            errorModalSetter={setOpenErrorModel} errorMessage={seterrorDescription} />}
+        </div>
+        <div className='sideBarModal'>
+          {openErrorModel && <ContactErrorModal close_modal_error={setOpenErrorModel} message={errorDescription} />}
+        </div>
+        <div className='sidebar_header'>
+          <img src={dataBase.usersDataBase.get(user).img} className="rounded-circle" alt="user" />
+          <div id="userName">{dataBase.usersDataBase.get(user).displayName}</div>
+          <button id='presonPlus_button' onClick={() => { setOpenModel(true); }}>
+            <PersonPlus />
+          </button>
+        </div>
+        <div className='sidebar_chats'>
+          {showChats}
+        </div>
       </div>
-      <div className='sidebar_chats'>
-        <SingleSideChat name="tomer" lastMessage={"love you"} lastseen="03:54" />
-        <SingleSideChat name="tomer" lastMessage={"love you love you love you love you love you love youlove you"} lastseen="11:54" />
-        <SingleSideChat name="tomer" lastMessage={"love youuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu"} lastseen="03:54" />
-        <SingleSideChat name="tomer" lastMessage={"love youuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu youuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu youuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu youuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu"} lastseen="03:54" />
-        <SingleSideChat name="tomer" lastMessage={"loveyouuuuuhuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu "} lastseen="03:54" />
-        <SingleSideChat name="tomer" lastMessage={"loveyouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu "} lastseen="03:54" />
-        <SingleSideChat name="tomer" lastMessage={"noa "} lastseen="03:54" />
-
-
-      </div>
-    </div>
+    </>
   )
 }
 

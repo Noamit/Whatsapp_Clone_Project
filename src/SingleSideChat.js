@@ -1,19 +1,24 @@
 import React from 'react'
 import './SingleSideChat.css'
-import img2 from './img2.jpg'
+import dataBase from './DataBase'
 
-function SingleSideChat({ name, lastMessage, lastseen }) {
+function SingleSideChat({ name, chatWithX }) {
+
     return (
-        <p className='SingleSideChat'>
-            <img src={img2} className="rounded-circle" alt="new contant" />
-            <div className='SingleSideChat_info'>
-                <div className='a'>
-                    <div id="info_name">{name} </div>
-                    <p id="info_message">{lastMessage}</p>
+        <>
+            <label className='SingleSideChat' htmlFor={name}>
+                <img src={dataBase.usersDataBase.get(name).img} className="rounded-circle" alt="new contant" />
+                <div className='SingleSideChat_info'>
+                    <div className='a'>
+                        <div id="info_name">{dataBase.usersDataBase.get(name).displayName} </div>
+                        <p id="info_message">{dataBase.usersDataBase.get(name).lastMsg}</p>
+                    </div>
                 </div>
-            </div>
-            <div id="info_lastSeen">{lastseen}</div>
-        </p>
+                <div id="info_lastSeen">{dataBase.usersDataBase.get(name).lastMsgTime}</div>
+            </label>
+            <input type="button" id={name} onClick={() => {chatWithX(name)}} hidden />
+        </>
+
     )
 }
 
