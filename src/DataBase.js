@@ -2,6 +2,7 @@ import User from "./User";
 import noadog from './noadog.jpg'
 import audioFile from './audio.mp3'
 
+//DataBase to manage all the users and their chats with the messages.
 
 class DataBase {
     constructor() {
@@ -15,6 +16,9 @@ class DataBase {
 
 
 const dataBase = new DataBase();
+
+
+//Hard-Coded users and messages
 dataBase.addUserToDataBase('noamit', new User('noamit', 'noa amit', 'noa1', noadog));
 dataBase.addUserToDataBase('tomer',new User('tomer', 'tomer hadar', 'tomer1', noadog));
 dataBase.addUserToDataBase('noamit1', new User('noamit', 'noa amit', 'noa1', noadog));

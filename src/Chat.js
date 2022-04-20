@@ -6,7 +6,12 @@ import dataBase from './DataBase'
 import ModalImage from './ModalImage'
 
 
+// the chat component that implement the logic of all the messages.
+
+
+
 function Chat({ contact, setterLastMsgInArray, lastMsgInArray }) {
+  
   const [input, setInput] = useState("")
   const [activeRecord, setActiveRecord] = useState(false)
   const [audioMessage, setAudioMessage] = useState("")
@@ -14,10 +19,11 @@ function Chat({ contact, setterLastMsgInArray, lastMsgInArray }) {
   const [fileMsg, setFileMsg] = useState(() => false)
   const [fileKind, setFileKind] = useState(() => '')
   const [fileURL, setFileURL] = useState(() => null)
-
   const [imageVal, setImageVal] = useState('')
   const [videoVal, setVideoVal] = useState('')
 
+
+  //function to get the current time - for the messages.
   const getTime = () => {
     let today = new Date();
     let hour = String(today.getHours()).padStart(2, '0');
@@ -25,8 +31,11 @@ function Chat({ contact, setterLastMsgInArray, lastMsgInArray }) {
     return hour + ":" + min
   }
 
+  //create an array of messages and when the user send new message the page render and this array get update
   const showMessage = dataBase.usersDataBase.get(contact).userChats.map((msg) => { return msg })
 
+
+  //when sending a message we return the message with nice design and also check which kind of message.
   const newMessage = (e) => {
     e.preventDefault();
     if (activeRecord) {
@@ -46,7 +55,7 @@ function Chat({ contact, setterLastMsgInArray, lastMsgInArray }) {
         {input}
         <span className='message_time'>{getTime()}</span></p>)
 
-      dataBase.usersDataBase.get(contact).lastMsg = "IMAGE";
+      dataBase.usersDataBase.get(contact).lastMsg = fileKind;
       dataBase.usersDataBase.get(contact).lastMsgTime = getTime();
     }
 
@@ -68,14 +77,14 @@ function Chat({ contact, setterLastMsgInArray, lastMsgInArray }) {
     setterLastMsgInArray(!lastMsgInArray);
   }
 
-
+//function to create source File from the URL and check if the file is image or video
   const getFile = (e, kind) => {
     if (e.target.files) {
       if (e.target.files[0]) {
         setFileMsg(true)
         setFileKind(kind)
         const URLfile = URL.createObjectURL(e.target.files[0])
-        if (kind === "Video") {
+        if (kind === "VIDEO") {
           setFile(<video controls="controls" src={URLfile} type="video/*" className='send_img' alt='' />)
         }
         else {
@@ -87,7 +96,7 @@ function Chat({ contact, setterLastMsgInArray, lastMsgInArray }) {
   }
 
 
-
+//when the page render, returning the html that create the chat itself.
   return (
     <div className='chat'>
       <div className='chat_header'>
@@ -109,14 +118,14 @@ function Chat({ contact, setterLastMsgInArray, lastMsgInArray }) {
             <div className='buttons_optaions'>
               <button onClick={() => setVideoVal('')}>
                 <label htmlFor="video">&nbsp;<CameraReels />&nbsp;</label>
-                <input id="video" type="file" accept="video/*" hidden value={videoVal} onChange={(e) => getFile(e, "Video")} />
+                <input id="video" type="file" accept="video/*" hidden value={videoVal} onChange={(e) => getFile(e, "VIDEO")} />
               </button>
 
               <button onClick={() => setActiveRecord(true)}>&nbsp;<Mic />&nbsp;</button>
 
               <button onClick={() => setImageVal('')}>
                 <label htmlFor="img">&nbsp;<Image />&nbsp;</label>
-                <input id="img" type="file" accept="image/png, image/jpeg" hidden value={imageVal} onChange={(e) => {getFile(e, "Image"); }} />
+                <input id="img" type="file" accept="image/png, image/jpeg" hidden value={imageVal} onChange={(e) => {getFile(e, "IMAGE"); }} />
               </button >
             </div>
           </ul>
@@ -127,6 +136,7 @@ function Chat({ contact, setterLastMsgInArray, lastMsgInArray }) {
           <button type='submit' onClick={newMessage}>Send</button>
         </form>
       </div>
+      {/* modals for the recording and images, videos messages */}
       {activeRecord && <ModalRecord modalSetter={setActiveRecord} messageSetter={setAudioMessage} time={getTime} />}
       {fileMsg && <ModalImage modalSetter={setFileMsg} fileToSend={fileURL} kind={fileKind} />}    </div>
   )

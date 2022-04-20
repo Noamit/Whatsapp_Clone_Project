@@ -4,6 +4,8 @@ import './Login.css'
 import LoginModal from './LoginModal'
 import dataBase from './DataBase'
 
+//Login component that implement the logic of 
+
 function Login({ userSetter }) {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -16,6 +18,7 @@ function Login({ userSetter }) {
         Valid();
     }, [userName, password])
 
+    //while click login we render the page with new Login button(if one of the details ilegel), or go to the chat room
     const renderAuthButton = () => {
         if (isLoggedIn) {
             return (
@@ -29,7 +32,7 @@ function Login({ userSetter }) {
             );
         }
     }
-
+    //checks Validetion of username and password
     const Valid = () => {
         if (userName.length > 0 && password.length > 0 && (dataBase.usersDataBase.has(userName) && dataBase.usersDataBase.get(userName).password === String(password))) {
             setIsLoggedIn(bool => bool = true)

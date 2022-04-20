@@ -7,7 +7,7 @@ function SideBarModal({ close_modal, setterContactsArray, contactsArray, errorMo
 
     const [contactInfo, setContactInfo] = useState('');
     
-
+    //while the user try to had someone to chat with him we check if that person exsist or already open.
     const validNewContact = () => {
         if(dataBase.usersDataBase.has(contactInfo) && !contactsArray.includes(contactInfo)) {
             setterContactsArray( arr => [...arr, contactInfo])

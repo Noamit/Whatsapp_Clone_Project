@@ -1,3 +1,6 @@
+
+//user Class to save all the userData.
+
 class User {
 constructor(userNameX, displayNameX, passwordX, imgX) {
         this.userName = userNameX;

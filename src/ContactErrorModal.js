@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Modal } from 'react-bootstrap'
 
 function ContactErrorModal({ close_modal_error, message }) {
+    //modal for error when register with ilegel fields (for example - password without numbers)
     return (
         <div className='leftModal'>
             <Modal.Dialog className='modal-dialog'>
