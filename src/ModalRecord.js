@@ -81,6 +81,7 @@ function ModalRecord({ modalSetter, messageSetter }) {
             </Modal.Header>
             <Modal.Body>
                 {Record()}
+                <br/>
                 <button variant="secondary" onClick={() => { modalSetter(false) }}>Close</button>
             </Modal.Body>
         </div>
