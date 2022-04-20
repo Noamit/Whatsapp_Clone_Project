@@ -1,5 +1,5 @@
 import React from 'react'
-import './EmptyChat.css'
+import './cssFiles/EmptyChat.css'
 
 //returning an emptyChat
 

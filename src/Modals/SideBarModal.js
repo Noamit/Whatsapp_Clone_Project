@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
-import dataBase from './DataBase';
+import dataBase from '.././DataBase';
 
 
 function SideBarModal({ close_modal, setterContactsArray, contactsArray, errorModalSetter, errorMessage}) {

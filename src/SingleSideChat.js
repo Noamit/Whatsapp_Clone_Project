@@ -1,5 +1,5 @@
 import React from 'react'
-import './SingleSideChat.css'
+import './cssFiles/SingleSideChat.css'
 import dataBase from './DataBase'
 
 function SingleSideChat({ name, chatWithX }) {

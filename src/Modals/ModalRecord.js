@@ -51,9 +51,9 @@ function ModalRecord({ modalSetter, messageSetter }) {
                 messageSetter(<audio src={URL.createObjectURL(e.data)} controls />)   
             };
 
-            recorder.addEventListener("data", handleData);
+            recorder.addEventListener("dataavailable", handleData);
             
-            return () => recorder.removeEventListener("data", handleData);
+            return () => recorder.removeEventListener("dataavailable", handleData);
             //active useEffect function when one of those field change.
         }, [recorder, isRecording]);
 
