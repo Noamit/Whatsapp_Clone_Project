@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Chat from './Chat';
 import Sidebar from './Sidebar';
-import './Appbody.css'
+import './cssFiles/Appbody.css'
 import EmptyChat from './EmptyChat';
 
 

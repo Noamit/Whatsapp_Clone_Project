@@ -1,6 +1,6 @@
 import React from 'react'
 import { Modal } from 'react-bootstrap'
-import './Chat.css'
+import '../cssFiles/Chat.css'
 
 function ModalImage({ modalSetter, fileToSend, kind }) {
 //check if the file is an image or video

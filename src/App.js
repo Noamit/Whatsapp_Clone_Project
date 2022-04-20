@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from './Login';
 import Register from './Register'
 import Appbody from './Appbody'
-import './Modal.css'
+import './Modals/Modal.css'
 
 function App() {
 

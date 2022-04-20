@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Login.css'
-import RegisterErrorModal from './RegisterErrorModal';
-import RegisterSuccessModal from './RegisterSuccessModal';
+import './cssFiles/Login.css'
+import RegisterErrorModal from './Modals/RegisterErrorModal';
+import RegisterSuccessModal from './Modals/RegisterSuccessModal';
 import User from './User';
 import dataBase from './DataBase'
 
