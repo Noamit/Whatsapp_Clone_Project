@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Modal } from 'react-bootstrap'
 
 
-function ModalRecord({ modalSetter, messageSetter, time }) {
+function ModalRecord({ modalSetter, messageSetter }) {
 
 
     function Record() {
@@ -47,6 +47,7 @@ function ModalRecord({ modalSetter, messageSetter, time }) {
             // Obtain the audio when ready.
             const handleData = e => {
                 setAudioURL(URL.createObjectURL(e.data));
+                console.log(e.data)
                 messageSetter(<audio src={URL.createObjectURL(e.data)} controls />)   
             };
 
