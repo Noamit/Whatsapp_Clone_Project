@@ -11,6 +11,7 @@ import noadog from './photosAndFiles/dog.jpg';
 
 import './Chat.css'
 
+//DataBase to manage all the users and their chats with the messages.
 
 class DataBase {
     constructor() {
@@ -24,6 +25,8 @@ class DataBase {
 
 
 const dataBase = new DataBase();
+
+//Hard-Coded users and messages
 dataBase.addUserToDataBase('noamit', new User('noamit', 'noa amit', 'noa1', noamitPic));
 dataBase.addUserToDataBase('tomerk',new User('tomerk', 'tomer hadar', 'tomer1', tomerPic));
 dataBase.addUserToDataBase('mommy', new User('mommy', 'best mommy', 'mommy1', mommyPic));
@@ -61,6 +64,5 @@ how are you today?
 <span className='message_time'>12:00</span></p>)
 dataBase.usersDataBase.get('sister').lastMsg = 'how are you today?'
 dataBase.usersDataBase.get('sister').lastMsgTime = '12:00'
-
 
 export default dataBase;
