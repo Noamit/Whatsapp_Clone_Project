@@ -5,7 +5,7 @@ import './Chat.css'
 function ModalImage({ modalSetter, fileToSend, kind }) {
 
     const kindOfile = ()=>{
-        return (kind === "Video") ? (
+        return (kind === "VIDEO") ? (
             <video controls="controls" src={fileToSend} className='send_img'/>
         ) : (
             <img src={fileToSend} className='send_img' alt=''/>

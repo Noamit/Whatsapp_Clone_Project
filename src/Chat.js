@@ -46,7 +46,7 @@ function Chat({ contact, setterLastMsgInArray, lastMsgInArray }) {
         {input}
         <span className='message_time'>{getTime()}</span></p>)
 
-      dataBase.usersDataBase.get(contact).lastMsg = "IMAGE";
+      dataBase.usersDataBase.get(contact).lastMsg = fileKind;
       dataBase.usersDataBase.get(contact).lastMsgTime = getTime();
     }
 
@@ -75,7 +75,7 @@ function Chat({ contact, setterLastMsgInArray, lastMsgInArray }) {
         setFileMsg(true)
         setFileKind(kind)
         const URLfile = URL.createObjectURL(e.target.files[0])
-        if (kind === "Video") {
+        if (kind === "VIDEO") {
           setFile(<video controls="controls" src={URLfile} type="video/*" className='send_img' alt='' />)
         }
         else {
@@ -109,14 +109,14 @@ function Chat({ contact, setterLastMsgInArray, lastMsgInArray }) {
             <div className='buttons_optaions'>
               <button onClick={() => setVideoVal('')}>
                 <label htmlFor="video">&nbsp;<CameraReels />&nbsp;</label>
-                <input id="video" type="file" accept="video/*" hidden value={videoVal} onChange={(e) => getFile(e, "Video")} />
+                <input id="video" type="file" accept="video/*" hidden value={videoVal} onChange={(e) => getFile(e, "VIDEO")} />
               </button>
 
               <button onClick={() => setActiveRecord(true)}>&nbsp;<Mic />&nbsp;</button>
 
               <button onClick={() => setImageVal('')}>
                 <label htmlFor="img">&nbsp;<Image />&nbsp;</label>
-                <input id="img" type="file" accept="image/png, image/jpeg" hidden value={imageVal} onChange={(e) => {getFile(e, "Image"); }} />
+                <input id="img" type="file" accept="image/png, image/jpeg" hidden value={imageVal} onChange={(e) => {getFile(e, "IMAGE"); }} />
               </button >
             </div>
           </ul>
