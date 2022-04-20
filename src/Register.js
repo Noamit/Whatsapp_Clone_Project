@@ -30,7 +30,7 @@ function Register() {
         Valid();
     }, [userName, password, displayName, confirmedPassword])
 
-
+    //while click Register we render the page with new Register button(if one of the details ilegel), or go to the Login page
     const renderAuthButton = () => {
         if (isRegistered) {
             return (
@@ -46,12 +46,13 @@ function Register() {
             );
         }
     }
-
+    //checks Validetion of username and password
     const Valid = () => {
         if (userName.length > 0 && password.length > 0 && displayName.length > 0
             && String(password) === String(confirmedPassword) && checkPassword() && !(dataBase.usersDataBase.has(userName))) {
             setisRegistered(bool => bool = true)
         }
+        //set the correct error message according the error case.
         else {
             if (userName.length === 0 || confirmedPassword.length === 0 || displayName.length === 0 || password.length === 0) {
                 seterrorDescription('please fill all the fields');
@@ -65,11 +66,12 @@ function Register() {
         }
     }
 
+    //checks for valid password
     const checkPassword = () => {
         return /[a-zA-Z]/.test(password) && /[0-9]/.test(password);
     }
 
-
+    //create sourceFile for the profile image after the user upload it
     const readImage = (e) => {
         if(e.target.files){
             if(e.target.files[0]){

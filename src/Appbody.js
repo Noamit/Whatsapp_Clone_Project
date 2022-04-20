@@ -4,11 +4,16 @@ import Sidebar from './Sidebar';
 import './Appbody.css'
 import EmptyChat from './EmptyChat';
 
+
+//function that starts the application after login
+
+
 function Appbody({userChat}) {
 
   const [openChatWith, setOpenChatWith] = useState('');
   const [updateLastMsg, setUpdateLastMsg] = useState(true);
 
+  //starts with emptyChat until the user pick one.
   const renderCharOrEmtyChat = () => {
     if (openChatWith != '') {
       return (<Chat contact={openChatWith} setterLastMsgInArray={setUpdateLastMsg} lastMsgInArray={updateLastMsg}/>);
@@ -17,6 +22,8 @@ function Appbody({userChat}) {
     }
   }
 
+
+  //return the sidebar and checks if the user pick a chat to open.
   return (
     <div className="app">
       <div className="app_body">

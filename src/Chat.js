@@ -6,7 +6,12 @@ import dataBase from './DataBase'
 import ModalImage from './ModalImage'
 
 
+// the chat component that implement the logic of all the messages.
+
+
+
 function Chat({ contact, setterLastMsgInArray, lastMsgInArray }) {
+  
   const [input, setInput] = useState("")
   const [activeRecord, setActiveRecord] = useState(false)
   const [audioMessage, setAudioMessage] = useState("")
@@ -14,10 +19,11 @@ function Chat({ contact, setterLastMsgInArray, lastMsgInArray }) {
   const [fileMsg, setFileMsg] = useState(() => false)
   const [fileKind, setFileKind] = useState(() => '')
   const [fileURL, setFileURL] = useState(() => null)
-
   const [imageVal, setImageVal] = useState('')
   const [videoVal, setVideoVal] = useState('')
 
+
+  //function to get the current time - for the messages.
   const getTime = () => {
     let today = new Date();
     let hour = String(today.getHours()).padStart(2, '0');
@@ -25,8 +31,11 @@ function Chat({ contact, setterLastMsgInArray, lastMsgInArray }) {
     return hour + ":" + min
   }
 
+  //create an array of messages and when the user send new message the page render and this array get update
   const showMessage = dataBase.usersDataBase.get(contact).userChats.map((msg) => { return msg })
 
+
+  //when sending a message we return the message with nice design and also check which kind of message.
   const newMessage = (e) => {
     e.preventDefault();
     if (activeRecord) {
@@ -68,7 +77,7 @@ function Chat({ contact, setterLastMsgInArray, lastMsgInArray }) {
     setterLastMsgInArray(!lastMsgInArray);
   }
 
-
+//function to create source File from the URL and check if the file is image or video
   const getFile = (e, kind) => {
     if (e.target.files) {
       if (e.target.files[0]) {
@@ -87,7 +96,7 @@ function Chat({ contact, setterLastMsgInArray, lastMsgInArray }) {
   }
 
 
-
+//when the page render, returning the html that create the chat itself.
   return (
     <div className='chat'>
       <div className='chat_header'>
@@ -127,6 +136,7 @@ function Chat({ contact, setterLastMsgInArray, lastMsgInArray }) {
           <button type='submit' onClick={newMessage}>Send</button>
         </form>
       </div>
+      {/* modals for the recording and images, videos messages */}
       {activeRecord && <ModalRecord modalSetter={setActiveRecord} messageSetter={setAudioMessage} time={getTime} />}
       {fileMsg && <ModalImage modalSetter={setFileMsg} fileToSend={fileURL} kind={fileKind} />}    </div>
   )

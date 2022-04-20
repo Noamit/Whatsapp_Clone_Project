@@ -3,7 +3,7 @@ import { Button, Modal } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 
 function RegisterSuccessModal(close_modal) {
-
+    //popup modal for successfully Registration
     return (
         <Modal.Dialog>
             <Modal.Header>

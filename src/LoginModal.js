@@ -2,6 +2,8 @@ import React from 'react'
 import { Button, Modal } from 'react-bootstrap'
 
 function LoginModal({ close_modal}) {
+
+    //popup window that come up when username or password ilegel
     return (
         <Modal.Dialog>
             <Modal.Header>

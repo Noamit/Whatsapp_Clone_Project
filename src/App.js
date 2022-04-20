@@ -9,6 +9,7 @@ function App() {
 
   const [newUser, setNewUser] = useState('')
 
+  //using routes to nevigate without re-fresh the page
   return (
     <>
       <BrowserRouter>

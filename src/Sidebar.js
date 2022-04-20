@@ -14,10 +14,11 @@ function Sidebar({ user, chatWith }) {
   const [openErrorModel, setOpenErrorModel] = useState(() => false);
   const [errorDescription, seterrorDescription] = useState('');
 
-
+  //Array to save all the Chats 
   const showChats = chatsArray.map((username) => { return <SingleSideChat name={username} chatWithX={chatWith} /> })
 
 
+  //returning the html that describe the sidebar with all the logic inside(as function calls).
   return (
     <>
       <div className='sidebar'>

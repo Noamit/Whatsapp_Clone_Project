@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Modal } from 'react-bootstrap'
 
 function RegisterErrorModal({ close_modal , message}) {
-    
+    //modal that popup if there is some error while register
     return (
         <Modal.Dialog>
             <Modal.Header>
@@ -10,6 +10,7 @@ function RegisterErrorModal({ close_modal , message}) {
             </Modal.Header>
 
             <Modal.Body>
+                {/* present the correct message for each error */}
                 <p>{message}</p>
             </Modal.Body>
 
