@@ -116,7 +116,7 @@ function Chat({ contact, setterLastMsgInArray, lastMsgInArray }) {
 
               <button onClick={() => setImageVal('')}>
                 <label htmlFor="img">&nbsp;<Image />&nbsp;</label>
-                <input id="img" type="file" accept="image/png, image/jpeg" hidden value={imageVal} onChange={(e) => {getFile(e, "Image"); console.log("change") }} />
+                <input id="img" type="file" accept="image/png, image/jpeg" hidden value={imageVal} onChange={(e) => {getFile(e, "Image"); }} />
               </button >
             </div>
           </ul>

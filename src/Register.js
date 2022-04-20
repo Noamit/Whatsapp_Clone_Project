@@ -18,6 +18,7 @@ function Register() {
     const [openErrorModel, setOpenErrorModel] = useState(() => false);
     const [openSuccessModel, setOpenSuccessModel] = useState(() => false);
     const [errorDescription, seterrorDescription] = useState(() => 'please fill all the fields');
+    const [imageString, setImageString] = useState(() => 'Click To Upload Profile Picture')
 
     useEffect(() => {
         setUserName(userName)
@@ -72,6 +73,7 @@ function Register() {
         if(e.target.files){
             if(e.target.files[0]){
                 setImg(URL.createObjectURL(e.target.files[0]));
+                setImageString('Profile Picture Uploaded Successfully')
             }
         }
     }
@@ -112,7 +114,7 @@ function Register() {
                         </div>
 
                         <div className='login_body_input'>
-                            <label htmlFor="img1" className='btn btn-dark'>Click To Upload Profile Picture </label>
+                            <label htmlFor="img1" className='btn btn-dark'>{imageString}</label>
                             <input id="img1" type="file" accept="image/png, image/jpeg" hidden onChange={readImage} />
                         </div>
 
