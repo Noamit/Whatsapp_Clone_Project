@@ -11,7 +11,7 @@ function ModalImage({ modalSetter, fileToSend, kind }) {
             <img src={fileToSend} className='send_img' alt=''/>
         )
     }
-    //return value according the file kind and preview it before sending
+    //return value according the file kind and preview it before sending.
     return (
         <div>
             <Modal.Header>
