@@ -28,7 +28,7 @@ const dataBase = new DataBase();
 
 //Hard-Coded users and messages
 dataBase.addUserToDataBase('noamit', new User('noamit', 'noa amit', 'noa1', noamitPic));
-dataBase.addUserToDataBase('tomerk',new User('tomerk', 'tomer hadar', 'tomer1', tomerPic));
+dataBase.addUserToDataBase('tomerk',new User('tomerk', 'Tomer Hadar', 'tomer1', tomerPic));
 dataBase.addUserToDataBase('mommy', new User('mommy', 'best mommy', 'mommy1', mommyPic));
 dataBase.addUserToDataBase('daddy',new User('daddy', 'best daddy', 'daddy1', daddyPic));
 dataBase.addUserToDataBase('sister',new User('sister', 'my sister', 'sister1', sisPic));
