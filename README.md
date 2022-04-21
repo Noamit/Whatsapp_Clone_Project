@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+NTM Application
+חלק ראשון בפרוייקט מתגלגל של בניית Whats App Clone.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+תיאור:
 
-In the project directory, you can run:
+כאשר מפעילים את האפליקציה נפתח עמוד ה - Login, מעמוד זה ניתן לעבור למסך ההרשמה(עמוד ה - register) במידה ואינכם רשומים לאפליקציה.
+לאחר הרשמה מוצלחת תועברו לעמוד ה - Login כדי להתחבר עם המשתמש החדש שלכם.
 
-### `npm start`
+עם ההתחברות תפתח האפליקציה, ריקה מתוכן, כעת על ידי לחיצה על כפתור הוספת הצאט,
+שנמצא ליד התמונת פרופיל שלכם, ניתן לצרף צאטים עם אנשים שרשומים לאפליקציה.
+לשם כך ישנם 5 משתמשים רשומים כ - Hard-Coded:
+1. שם משתמש - noamit, סיסמא - noa1, שם תצוגה - noa amit.
+2. שם משתמש - tomerk, סיסמא - tomer1, שם תצוגה - Tomer Hadar.
+3. שם משתמש - mommy, סיסמא - mommy1, שם תצוגה - best mommy.
+4. שם משתמש - daddy, סיסמא - daddy1, שם תצוגה - best daddy.
+5. שם משתמש - sister, סיסמא - sister1, שם תצוגה - my sister. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+כמובן שגם תוכלו להירשם עם כמה משתמשים שונים שתרצו ולפתוח צאטים איתם ולא רק עם המשתמשים שרשומים כ - Hard-Coded.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+על ידי רשימת ה - username של משתמש שכבר רשום ניתן לפתוח עימו צאט חדש.
+בכל אחד מחמשת המשתמשים שרשומים לעיל ישנה סוג הודעה כלשהי שתפתח ברגע שתפתחו עימו צאט חדש.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+בעת כניסה לצאט כלשהו, ניתן גם לשלוח הודעות חדשות ומסוגים שונים,
+בעת שליחת הקלטה/תמונה/וידאו ישנה הסתכלות מודקמת על התוכן אותו תרצו לשלוח,
+בכך ניתן לראות לפני שליחה איך נראה התוכן או איך נשמעת ההקלטה עוד לפני השליחה וכמובן שקיימת האפשרות לבטל את השליחה כאשר ההודעה מוצגת לפני שנשלחת.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+להרצת הפרוייקט יש לבצע npm install  ולאחר מכן npm start, זאת כיוון שלאחר ביצוע pull לפרוייקט,
+לא קיימת תיקיית ה - node_modules כיוון שכללנו את התיקייה הנ״ל בקובץ .gitignore .
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
