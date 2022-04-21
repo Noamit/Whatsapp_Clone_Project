@@ -30,4 +30,3 @@ NTM Application
 להרצת הפרוייקט יש לבצע npm install  ולאחר מכן npm start, זאת כיוון שלאחר ביצוע pull לפרוייקט,
 לא קיימת תיקיית ה - node_modules כיוון שכללנו את התיקייה הנ״ל בקובץ .gitignore .
 
-
