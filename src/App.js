@@ -17,7 +17,7 @@ function App() {
           <Routes>
           <Route path='/' element={<Login userSetter={setNewUser} />}></Route>
           <Route path='/register' element={<Register />}></Route>
-            <Route path='/chat' element={<Realod userSetter={setNewUser} />}></Route>
+          <Route path='/chat' element={<Realod userSetter={setNewUser} />}></Route>
           </Routes>
         </BrowserRouter>
       );
