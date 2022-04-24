@@ -3,7 +3,7 @@ import { Button, Modal } from 'react-bootstrap'
 import dataBase from '.././DataBase';
 
 
-function SideBarModal({ close_modal, setterContactsArray, contactsArray, errorModalSetter, errorMessage}) {
+function SideBarModal({ myUser, close_modal, setterContactsArray, contactsArray, errorModalSetter, errorMessage}) {
 
     const [contactInfo, setContactInfo] = useState('');
     
@@ -11,6 +11,7 @@ function SideBarModal({ close_modal, setterContactsArray, contactsArray, errorMo
     const validNewContact = () => {
         if(dataBase.usersDataBase.has(contactInfo) && !contactsArray.includes(contactInfo)) {
             setterContactsArray( arr => [...arr, contactInfo])
+            dataBase.usersDataBase.get(myUser).userChats.set(contactInfo,{msgArray:[], lastMsg:"", lastMsgTime:""})
         } else if(dataBase.usersDataBase.has(contactInfo)) {
             errorMessage('Chat Already Open')
             errorModalSetter(() => true)
