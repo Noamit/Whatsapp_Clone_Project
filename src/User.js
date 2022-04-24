@@ -7,9 +7,7 @@ constructor(userNameX, displayNameX, passwordX, imgX) {
         this.displayName = displayNameX;
         this.password = passwordX;
         this.img = imgX;
-        this.userChats = [];
-        // this.lastMsg ='';
-        // this.lastMsgTime = '';
+        this.userChats = new Map();
     }
     getUserName () {
         return this.username;

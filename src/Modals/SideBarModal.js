@@ -11,7 +11,7 @@ function SideBarModal({ myUser, close_modal, setterContactsArray, contactsArray,
     const validNewContact = () => {
         if(dataBase.usersDataBase.has(contactInfo) && !contactsArray.includes(contactInfo)) {
             setterContactsArray( arr => [...arr, contactInfo])
-            dataBase.usersDataBase.get(myUser).userChats.push({chatName:contactInfo, msg:[], lastMsg:"", msgTime:""})
+            dataBase.usersDataBase.get(myUser).userChats.set(contactInfo,{msgArray:[], lastMsg:"", lastMsgTime:""})
         } else if(dataBase.usersDataBase.has(contactInfo)) {
             errorMessage('Chat Already Open')
             errorModalSetter(() => true)

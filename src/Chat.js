@@ -10,7 +10,7 @@ import ModalImage from './Modals/ModalImage'
 
 
 function Chat({ user, contact, setterLastMsgInArray, lastMsgInArray }) {
-  
+
   const [input, setInput] = useState("")
   const [activeRecord, setActiveRecord] = useState(false)
   const [audioMessage, setAudioMessage] = useState("")
@@ -21,7 +21,6 @@ function Chat({ user, contact, setterLastMsgInArray, lastMsgInArray }) {
   const [imageVal, setImageVal] = useState('')
   const [videoVal, setVideoVal] = useState('')
 
-
   //function to get the current time - for the messages.
   const getTime = () => {
     let today = new Date();
@@ -31,42 +30,41 @@ function Chat({ user, contact, setterLastMsgInArray, lastMsgInArray }) {
   }
 
   //create an array of messages and when the user send new message the page render and this array get update
-  const showMessage = dataBase.usersDataBase.get(contact).userChats.map((msg) => { return msg })
-
+  const showMessage = dataBase.usersDataBase.get(user).userChats.get(contact).msgArray.map((msg) => { return msg })
 
   //when sending a message we return the message with nice design and also check which kind of message.
   const newMessage = (e) => {
     e.preventDefault();
     if (activeRecord) {
-      dataBase.usersDataBase.get(contact).userChats.push(<p className={`message ${true && 'recive_message'}`}>
+      dataBase.usersDataBase.get(user).userChats.get(contact).msgArray.push(<p className={`message ${true && 'recive_message'}`}>
         {audioMessage}
         <br />
         {input}
         <span className='message_time'>{getTime()}</span></p>)
-      
-      dataBase.usersDataBase.get(contact).lastMsg = "VOICE MESSAGE";
-      dataBase.usersDataBase.get(contact).lastMsgTime = getTime();
+
+      dataBase.usersDataBase.get(user).userChats.get(contact).lastMsg = "VOICE MESSAGE";
+      dataBase.usersDataBase.get(user).userChats.get(contact).lastMsgTime = getTime();
     }
     else if (fileMsg) {
-      dataBase.usersDataBase.get(contact).userChats.push(<p className={`message ${true && 'recive_message'}`}>
+      dataBase.usersDataBase.get(user).userChats.get(contact).msgArray.push(<p className={`message ${true && 'recive_message'}`}>
         {file}
         <br />
         {input}
         <span className='message_time'>{getTime()}</span></p>)
 
-      dataBase.usersDataBase.get(contact).lastMsg = fileKind;
-      dataBase.usersDataBase.get(contact).lastMsgTime = getTime();
+      dataBase.usersDataBase.get(user).userChats.get(contact).lastMsg = fileKind;
+      dataBase.usersDataBase.get(user).userChats.get(contact).lastMsgTime = getTime();
     }
 
     else if (input.length > 0) {
-      dataBase.usersDataBase.get(contact).userChats.push(<p className={`message ${true && 'recive_message'}`}>
+      dataBase.usersDataBase.get(user).userChats.get(contact).msgArray.push(<p className={`message ${true && 'recive_message'}`}>
         {input}
         <span className='message_time'>{getTime()}</span></p>)
 
-      dataBase.usersDataBase.get(contact).lastMsg = input;
-      dataBase.usersDataBase.get(contact).lastMsgTime = getTime();
+      dataBase.usersDataBase.get(user).userChats.get(contact).lastMsg = input;
+      dataBase.usersDataBase.get(user).userChats.get(contact).lastMsgTime = getTime();
     }
-    
+
     setFileMsg(() => false)
     setFileKind(() => '')
     setFileURL(() => null)
@@ -76,7 +74,7 @@ function Chat({ user, contact, setterLastMsgInArray, lastMsgInArray }) {
     setterLastMsgInArray(!lastMsgInArray);
   }
 
-//function to create source File from the URL and check if the file is image or video
+  //function to create source File from the URL and check if the file is image or video
   const getFile = (e, kind) => {
     if (e.target.files) {
       if (e.target.files[0]) {
@@ -95,7 +93,7 @@ function Chat({ user, contact, setterLastMsgInArray, lastMsgInArray }) {
   }
 
 
-//when the page render, returning the html that create the chat itself.
+  //when the page render, returning the html that create the chat itself.
   return (
     <div className='chat'>
       <div className='chat_header'>
@@ -124,7 +122,7 @@ function Chat({ user, contact, setterLastMsgInArray, lastMsgInArray }) {
 
               <button onClick={() => setImageVal('')}>
                 <label htmlFor="img">&nbsp;<Image />&nbsp;</label>
-                <input id="img" type="file" accept="image/png, image/jpeg" hidden value={imageVal} onChange={(e) => {getFile(e, "IMAGE"); }} />
+                <input id="img" type="file" accept="image/png, image/jpeg" hidden value={imageVal} onChange={(e) => { getFile(e, "IMAGE"); }} />
               </button >
             </div>
           </ul>

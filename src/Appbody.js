@@ -7,7 +7,6 @@ import EmptyChat from './EmptyChat';
 
 //function that starts the application after login
 
-
 function Appbody({userChat}) {
 
   const [openChatWith, setOpenChatWith] = useState('');
