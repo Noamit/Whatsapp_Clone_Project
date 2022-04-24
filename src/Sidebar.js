@@ -14,7 +14,7 @@ function Sidebar({ user, chatWith }) {
   const [openErrorModel, setOpenErrorModel] = useState(() => false);
   const [errorDescription, seterrorDescription] = useState('');
 
-  //Array to save all the Chats 
+  //Array to save all the Chats
   const showChats = chatsArray.map((username) => { return <SingleSideChat name={username} chatWithX={chatWith} /> })
 
 
@@ -23,7 +23,7 @@ function Sidebar({ user, chatWith }) {
     <>
       <div className='sidebar'>
         <div className='sideBarModal'>
-          {openModel && <SideBarModal close_modal={setOpenModel} setterContactsArray={setChatsArray} contactsArray={chatsArray}
+          {openModel && <SideBarModal myUser={user} close_modal={setOpenModel} setterContactsArray={setChatsArray} contactsArray={chatsArray}
             errorModalSetter={setOpenErrorModel} errorMessage={seterrorDescription} />}
         </div>
         <div className='sideBarModal'>

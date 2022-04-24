@@ -16,7 +16,7 @@ function Appbody({userChat}) {
   //starts with emptyChat until the user pick one.
   const renderCharOrEmtyChat = () => {
     if (openChatWith != '') {
-      return (<Chat contact={openChatWith} setterLastMsgInArray={setUpdateLastMsg} lastMsgInArray={updateLastMsg}/>);
+      return (<Chat user={userChat} contact={openChatWith} setterLastMsgInArray={setUpdateLastMsg} lastMsgInArray={updateLastMsg}/>);
     } else {
       return (<EmptyChat />);
     }

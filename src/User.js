@@ -8,10 +8,9 @@ constructor(userNameX, displayNameX, passwordX, imgX) {
         this.password = passwordX;
         this.img = imgX;
         this.userChats = [];
-        this.lastMsg ='';
-        this.lastMsgTime = '';
+        // this.lastMsg ='';
+        // this.lastMsgTime = '';
     }
-
     getUserName () {
         return this.username;
     }

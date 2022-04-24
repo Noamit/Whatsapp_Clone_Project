@@ -9,8 +9,7 @@ import ModalImage from './Modals/ModalImage'
 // the chat component that implement the logic of all the messages.
 
 
-
-function Chat({ contact, setterLastMsgInArray, lastMsgInArray }) {
+function Chat({ user, contact, setterLastMsgInArray, lastMsgInArray }) {
   
   const [input, setInput] = useState("")
   const [activeRecord, setActiveRecord] = useState(false)
@@ -44,7 +43,7 @@ function Chat({ contact, setterLastMsgInArray, lastMsgInArray }) {
         <br />
         {input}
         <span className='message_time'>{getTime()}</span></p>)
-
+      
       dataBase.usersDataBase.get(contact).lastMsg = "VOICE MESSAGE";
       dataBase.usersDataBase.get(contact).lastMsgTime = getTime();
     }
