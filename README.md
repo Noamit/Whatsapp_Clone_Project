@@ -29,5 +29,6 @@ By the username of an already registered user you can open a new chat with him.
  
 When you enter any chat, you can also send new messages from different types, When you send a recording/picture/video, there's a preview look at the content you want to send, In this way, you can see before sending what the content looks like or what the recording sounds like before sending, and of course there is the possibility of canceling the submission when the message is displayed before it is sent. 
  
+ The libraries we used : react-router , react-bootstrap.
  
 To run the project, npm install and then npm start, this is because after pulling to the project, There is no node_modules folder because we included the above folder in the .gitignore file. 
