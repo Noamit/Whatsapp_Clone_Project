@@ -72,6 +72,12 @@ function Chat({ user, contact, setterLastMsgInArray, lastMsgInArray }) {
     setActiveRecord(false)
     setInput("")
     setterLastMsgInArray(!lastMsgInArray);
+
+    const el = document.getElementById('b')
+    if (el) {
+    el.scrollTop = el.scrollHeight;
+    el.scrollTop = el.scrollHeight;
+    }
   }
 
   //function to create source File from the URL and check if the file is image or video
@@ -102,7 +108,7 @@ function Chat({ user, contact, setterLastMsgInArray, lastMsgInArray }) {
           <div id='header_info_name'> {dataBase.usersDataBase.get(contact).displayName}</div>
         </div>
       </div>
-      <div className='chat_body'>
+      <div className='chat_body' id='b'>
         {showMessage}
       </div>
 
