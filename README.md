@@ -8,7 +8,10 @@ When you launch the app, the Login page opens, from that page you can go to the 
 After successful registration, you'll be taken to the Login page to connect with your new user. 
  
 Upon login, the app will open, empty of content, now by clicking the Add Chat button, which can be found Next to your profile picture, you can attach chats with people who sign up for the app. 
-There is a registered hard-coded user with the details: Username: bob, password: bob1, display name: bob bobby. 
+There is a registered hard-coded user with the details:
+
+<h3>Username: bob, password: bob1, display name: bob bobby.</h3>
+
 This user has five open chats with different types of text messages between them that were also inserted in Hard-Coded. 
 You can sign in to the other users, who have no chats at all in the user but of course you can add a new chat with one of the registered users and send messages. 
 The users are:
