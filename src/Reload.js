@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './cssFiles/Login.css'
 
 //Login component that implement the logic of 
 
-function Realod({ userSetter }) {
+function Realod() {
 
     return (
         <div className='login'>
