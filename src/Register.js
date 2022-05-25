@@ -64,7 +64,7 @@ function Register() {
     //checks Validetion of username and password
     const Valid = () => {
         if (userName.length > 0 && password.length > 0 && displayName.length > 0
-            && String(password) === String(confirmedPassword) && checkPassword() && !(dataBase.usersDataBase.has(userName))) {
+            && String(password) === String(confirmedPassword) && checkPassword()) {
             setisRegistered(bool => bool = true)
         }
         //set the correct error message according the error case.
