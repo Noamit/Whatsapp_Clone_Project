@@ -1,15 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import './cssFiles/Chat.css'
 import { Paperclip, CameraReels, Mic, Image } from 'react-bootstrap-icons'
 import ModalRecord from './Modals/ModalRecord'
 import dataBase from './DataBase'
 import ModalImage from './Modals/ModalImage'
+import defaultImg from './photosAndFiles/DefaultImage.jpg'
+import axios from 'axios';
+import Message from './Message';
 
 
 // the chat component that implement the logic of all the messages.
 
 
-function Chat({ user, contact, setterLastMsgInArray, lastMsgInArray }) {
+function Chat({ user, contact, setterLastMsgInArray, lastMsgInArray, newMsgRender, ChatConnection }) {
 
   const [input, setInput] = useState("")
   const [activeRecord, setActiveRecord] = useState(false)
@@ -20,6 +23,10 @@ function Chat({ user, contact, setterLastMsgInArray, lastMsgInArray }) {
   const [fileURL, setFileURL] = useState(() => null)
   const [imageVal, setImageVal] = useState('')
   const [videoVal, setVideoVal] = useState('')
+  const [showMessage, setShowMessage] = useState([])
+  const [renderShow, setRenderShow] = useState(true);
+
+  const [hubConnection, setHubConnection] = useState(true)
 
   //function to get the current time - for the messages.
   const getTime = () => {
@@ -29,40 +36,60 @@ function Chat({ user, contact, setterLastMsgInArray, lastMsgInArray }) {
     return hour + ":" + min
   }
 
+  useEffect(() => {
+    renderChat();
+  }, [renderShow, contact, newMsgRender, hubConnection])
+
+
+  ChatConnection.on("ReceiveMessage",  () => {
+    setHubConnection(!hubConnection);
+    });
+
+  async function renderChat() {
+    try {
+      const response = await axios.get('https://localhost:7288/api/contacts/' + contact.id + '/messages'+ "?user="+user);
+
+      if (response.status == 200) {
+        setShowMessage (response.data.map((u) => { return <Message msg={u} /> }))
+      }
+    } catch (err) {
+      return;
+    }
+  }
+
+  async function sendServer() {
+    const postRequestToMySERVER = {"content" : input};
+    try {
+        const response = await axios.post('https://localhost:7288/api/contacts/' + contact.id + '/Messages'+ "?user="+user, postRequestToMySERVER);
+    
+        if(response.status == 201) {
+            setRenderShow(!renderShow);
+        }
+    } catch (err) {
+      return;
+     }
+
+     const postRequestToMycontactserver = {"from": user, "to": contact.id ,"content" : input};
+     try {
+         const response = await axios.post('https://' +contact.server+ '/api/transfer' + "?user="+user, postRequestToMycontactserver);
+     
+         if(response.status == 201) {
+             return;
+         }
+     } catch (err) {
+       return;
+      }
+
+}
+
   //create an array of messages and when the user send new message the page render and this array get update
-  const showMessage = dataBase.usersDataBase.get(user).userChats.get(contact).msgArray.map((msg) => { return msg })
+  // const showMessage = dataBase.usersDataBase.get(user).userChats.get(contact).msgArray.map((msg) => { return msg })
 
   //when sending a message we return the message with nice design and also check which kind of message.
   const newMessage = (e) => {
     e.preventDefault();
-    if (activeRecord) {
-      dataBase.usersDataBase.get(user).userChats.get(contact).msgArray.push(<p className={`message ${true && 'recive_message'}`}>
-        {audioMessage}
-        <br />
-        {input}
-        <span className='message_time'>{getTime()}</span></p>)
-
-      dataBase.usersDataBase.get(user).userChats.get(contact).lastMsg = "VOICE MESSAGE";
-      dataBase.usersDataBase.get(user).userChats.get(contact).lastMsgTime = getTime();
-    }
-    else if (fileMsg) {
-      dataBase.usersDataBase.get(user).userChats.get(contact).msgArray.push(<p className={`message ${true && 'recive_message'}`}>
-        {file}
-        <br />
-        {input}
-        <span className='message_time'>{getTime()}</span></p>)
-
-      dataBase.usersDataBase.get(user).userChats.get(contact).lastMsg = fileKind;
-      dataBase.usersDataBase.get(user).userChats.get(contact).lastMsgTime = getTime();
-    }
-
-    else if (input.length > 0) {
-      dataBase.usersDataBase.get(user).userChats.get(contact).msgArray.push(<p className={`message ${true && 'recive_message'}`}>
-        {input}
-        <span className='message_time'>{getTime()}</span></p>)
-
-      dataBase.usersDataBase.get(user).userChats.get(contact).lastMsg = input;
-      dataBase.usersDataBase.get(user).userChats.get(contact).lastMsgTime = getTime();
+     if (input.length > 0) {
+      sendServer();
     }
 
     setFileMsg(() => false)
@@ -97,9 +124,11 @@ function Chat({ user, contact, setterLastMsgInArray, lastMsgInArray }) {
   return (
     <div className='chat'>
       <div className='chat_header'>
-        <img src={dataBase.usersDataBase.get(contact).img} id="rounded-circle_chat" className="rounded-circle" alt='user' />
+        {/* <img src={dataBase.usersDataBase.get(contact).img} id="rounded-circle_chat" className="rounded-circle" alt='user' /> */}
+        <img src={defaultImg} id="rounded-circle_chat" className="rounded-circle" alt='user' />
+
         <div className='header_info'>
-          <div id='header_info_name'> {dataBase.usersDataBase.get(contact).displayName}</div>
+          <div id='header_info_name'> {contact.name}</div>
         </div>
       </div>
       <div className='chat_body'>
