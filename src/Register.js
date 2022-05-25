@@ -5,7 +5,7 @@ import RegisterErrorModal from './Modals/RegisterErrorModal';
 import RegisterSuccessModal from './Modals/RegisterSuccessModal';
 import User from './User';
 import dataBase from './DataBase'
-
+import axios from 'axios';
 import defaultImg from './photosAndFiles/DefaultImage.jpg'
 
 function Register() {
@@ -30,14 +30,29 @@ function Register() {
         Valid();
     }, [userName, password, displayName, confirmedPassword])
 
+    async function sendServer() {
+        const postRequest = {"id": userName, "password":password, "displayName": displayName};
+        try {
+            const response = await axios.post('https://localhost:7288/api/Register' , postRequest);
+        
+            if(response.status == 200) {
+                setOpenSuccessModel(true);
+            }
+        } catch (err) {
+            seterrorDescription('username already exists, pls pick another One');
+            setOpenErrorModel(true);
+            setisRegistered(false);
+         }
+    }
+
     //while click Register we render the page with new Register button(if one of the details ilegel), or go to the Login page
     const renderAuthButton = () => {
         if (isRegistered) {
             return (
-                <input type="button" value="Register" className="btn btn-outline-secondary" onClick={() => {
-                    Valid();
-                    setOpenSuccessModel(true);
-                    dataBase.addUserToDataBase(userName, new User(userName, displayName, password, img));
+                <input type="button" value="Register" className="btn btn-outline-secondary" onClick={(e) => {
+                    e.preventDefault();
+                    sendServer();
+                    // dataBase.addUserToDataBase(userName, new User(userName, displayName, password, img));
                 }} />
             );
         } else {
@@ -60,8 +75,6 @@ function Register() {
                 seterrorDescription('password must contain at least one letter a-z or A-Z and one digit 0-9');
             } else if (String(password) !== String(confirmedPassword)) {
                 seterrorDescription('Incompatible passwords');
-            } else {
-                seterrorDescription('username already exists, pls pick another One');
             }
         }
     }
