@@ -31,4 +31,4 @@ When you enter any chat, you can also send new messages from different types, Wh
  
  The libraries we used : react-router , react-bootstrap.
  
-To run the project, npm install and then npm start, this is because after pulling to the project, There is no node_modules folder because we included the above folder in the .gitignore file. 
+To run the project : npm install and then npm start.
